@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Фитнес-уикенд — База отдыха «Алмаз»</title>
+  <meta name="description" content="Двухдневный интенсив: бег, функциональные тренировки, йога, танцы и байдарки — на берегу реки." />
+  
+  <!-- Open Graph для соцсетей -->
+  <meta property="og:title" content="Фитнес-уикенд — База отдыха «Алмаз»">
+  <meta property="og:description" content="Двухдневный интенсив: бег, функциональные тренировки, йога, танцы и байдарки — на берегу реки.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=1200&q=60">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',      /* Теплый зеленый */
+            accent: '#FF9800',       /* Оранжевый акцент */
+            'dark-bg': '#0a0a0a',    /* Черный фон */
+            'dark-card': '#111111',  /* Черный для карточек */
+            'dark-border': '#333333' /* Темная граница */
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s infinite'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .glass {
+      background: linear-gradient(135deg, rgba(17,17,17,0.9), rgba(10,10,10,0.9));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(51,51,51,0.5);
+    }
+    
+    .card-shadow {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #4CAF50, #FF9800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(90deg, #4CAF50, #689F38);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+    }
+    
+    .btn-accent {
+      background: linear-gradient(90deg, #FF9800, #FFB74D);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 152, 0, 0.3);
+    }
+    
+    .active-section {
+      color: #4CAF50 !important;
+    }
+    
+    .mobile-menu-enter {
+      animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    body {
+      background: linear-gradient(to bottom, #000000, #0a0a0a, #000000);
+    }
+    
+    .hero-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(76, 175, 80, 0.1), transparent 70%);
+    }
+  </style>
+</head>
+<body class="text-slate-100 antialiased">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <p class="mt-4 text-slate-300">Загрузка...</p>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300 opacity-0">
+    <i class="fas fa-arrow-up text-white"></i>
+  </button>
+
+  <!-- Container -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-6 sticky top-0 z-30 bg-black/80 backdrop-blur-md">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white shadow-lg animate-pulse-slow">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold leading-tight">Фитнес-уикенд</h1>
+          <p class="text-xs text-slate-400">16–17 июля • База отдыха «Алмаз»</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#about" class="hover:text-primary transition-colors duration-300 nav-link">О туре</a>
+        <a href="#speakers" class="hover:text-primary transition-colors duration-300 nav-link">Тренера</a>
+        <a href="#schedule" class="hover:text-primary transition-colors duration-300 nav-link">Расписание</a>
+        <a href="#tariffs" class="hover:text-primary transition-colors duration-300 nav-link">Тарифы</a>
+        <a href="#contact" class="px-4 py-2 btn-primary rounded-lg shadow text-white font-medium">Забронировать</a>
+      </nav>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded bg-white/5 hover:bg-white/10 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M2 4.5A1.5 1.5 0 013.5 3h13A1.5 1.5 0 0118 4.5v.5H2v-.5zM2 9.5h16v.5a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 012 10v-.5zM2 14.5h16v.5A1.5 1.5 0 0116.5 16h-13A1.5 1.5 0 012 15v-.5z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden mb-6 mobile-menu-enter">
+      <div class="flex flex-col gap-3 bg-dark-card p-4 rounded-lg glass border border-dark-border">
+        <a href="#about" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">О туре</a>
+        <a href="#speakers" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">Тренера</a>
+        <a href="#schedule" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">Расписание</a>
+        <a href="#tariffs" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">Тарифы</a>
+        <a href="#contact" class="py-2 px-3 btn-primary rounded text-center text-white font-medium">Забронировать</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10 animate-fade-in hero-bg py-10 rounded-3xl">
+      <div class="animate-slide-up">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">Фитнес-интенсив на природе</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">Выходные с пользой — <span class="gradient-text">спорт, природа</span> и новые знакомства</h2>
+        <p class="mt-4 text-slate-300 max-w-xl text-lg">Двухдневный интенсив: бег, функциональные тренировки, йога, танцы и байдарки — на берегу реки. Подойдёт как новичкам, так и опытным спортсменам.</p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="#tariffs" class="inline-flex items-center justify-center gap-2 btn-primary px-6 py-3 rounded-lg shadow text-white font-medium">
+            <i class="fas fa-calendar-check"></i>
+            Забронировать место
+          </a>
+          <a href="#schedule" class="inline-flex items-center justify-center gap-2 border border-dark-border px-6 py-3 rounded-lg text-slate-200 hover:bg-white/5 transition-colors duration-300">
+            <i class="far fa-clock"></i>
+            Посмотреть программу
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-4 text-sm text-slate-400">
+          <div class="p-4 glass rounded-xl feature-card transition-all duration-300">
+            <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-3">
+              <i class="fas fa-running text-primary"></i>
+            </div>
+            <h4 class="font-semibold text-white">6 активностей</h4>
+            <p class="mt-1">Бег, йога, функционал, танцы, байдарки, хайкинг</p>
+          </div>
+          <div class="p-4 glass rounded-xl feature-card transition-all duration-300">
+            <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center mb-3">
+              <i class="far fa-sun text-accent"></i>
+            </div>
+            <h4 class="font-semibold text-white">2 дня</h4>
+            <p class="mt-1">Интенсив и отдых на природе</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden card-shadow animate-slide-up">
+        <div class="p-1 bg-gradient-to-br from-primary/20 to-accent/20">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=1200&q=60" alt="kayak" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-105" />
+            <div class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+              Популярно
+            </div>
+          </div>
+          <div class="p-6 bg-dark-card">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-semibold">Сплав на байдарках</h3>
+                <p class="text-sm text-slate-300 mt-1">Путешествие по реке с обедом и прогулкой к местным достопримечательностям.</p>
+              </div>
+              <div class="text-sm text-slate-400 flex items-center">
+                <i class="far fa-calendar mr-1"></i>
+                16–17 июля
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers -->
+    <section id="speakers" class="mt-20">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">Наши эксперты</span>
+        <h3 class="text-3xl font-bold">Тренера — эксперты тура</h3>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Профессиональные инструкторы по бегу, йоге, функциональной подготовке и танцам.</p>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <article class="glass p-4 rounded-2xl shadow-md feature-card transition-all duration-300">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=60" alt="Татьяна Попова" class="w-full h-40 object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div class="text-white">
+                <p class="text-xs">Опыт: 8 лет</p>
+              </div>
+            </div>
+          </div>
+          <h4 class="mt-3 font-semibold">Татьяна Попова</h4>
+          <p class="text-xs text-slate-300">Тренер по бегу и танцам</p>
+          <p class="mt-2 text-slate-400 text-sm">Марафонская подготовка, латинские танцы, беговые тренировки.</p>
+          <div class="mt-4 flex gap-2">
+            <button class="text-xs px-3 py-2 bg-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Подробнее</button>
+            <button class="text-xs px-3 py-2 border border-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Записаться</button>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="glass p-4 rounded-2xl shadow-md feature-card transition-all duration-300">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1546488630-7f4b1a3b88b6?w=800&q=60" alt="Светлана Кочанова" class="w-full h-40 object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div class="text-white">
+                <p class="text-xs">Опыт: 6 лет</p>
+              </div>
+            </div>
+          </div>
+          <h4 class="mt-3 font-semibold">Светлана Кочанова</h4>
+          <p class="text-xs text-slate-300">Функциональный тренер</p>
+          <p class="mt-2 text-slate-400 text-sm">Функциональный и силовой тренинг, Tabata, круговые тренировки.</p>
+          <div class="mt-4 flex gap-2">
+            <button class="text-xs px-3 py-2 bg-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Подробнее</button>
+            <button class="text-xs px-3 py-2 border border-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Записаться</button>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="glass p-4 rounded-2xl shadow-md feature-card transition-all duration-300">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=60" alt="Оксана Маклакова" class="w-full h-40 object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div class="text-white">
+                <p class="text-xs">Опыт: 7 лет</p>
+              </div>
+            </div>
+          </div>
+          <h4 class="mt-3 font-semibold">Оксана Маклакова</h4>
+          <p class="text-xs text-slate-300">Тренер групповых занятий</p>
+          <p class="mt-2 text-slate-400 text-sm">Опыт работы с фитнес-бикини и программами для тонуса тела.</p>
+          <div class="mt-4 flex gap-2">
+            <button class="text-xs px-3 py-2 bg-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Подробнее</button>
+            <button class="text-xs px-3 py-2 border border-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Записаться</button>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="glass p-4 rounded-2xl shadow-md feature-card transition-all duration-300">
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="https://images.unsplash.com/photo-1526403224743-1d6f3f4c4f3b?w=800&q=60" alt="Сергей Самочернов" class="w-full h-40 object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div class="text-white">
+                <p class="text-xs">Опыт: 10 лет</p>
+              </div>
+            </div>
+          </div>
+          <h4 class="mt-3 font-semibold">Сергей Самочернов</h4>
+          <p class="text-xs text-slate-300">Тренер по йоге</p>
+          <p class="mt-2 text-slate-400 text-sm">Йогатерапия, дыхательные практики и восстановление.</p>
+          <div class="mt-4 flex gap-2">
+            <button class="text-xs px-3 py-2 bg-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Подробнее</button>
+            <button class="text-xs px-3 py-2 border border-dark-border rounded hover:bg-primary/20 transition-colors duration-300">Записаться</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule" class="mt-20">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-2">Программа</span>
+        <h3 class="text-3xl font-bold">Расписание уикенда</h3>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Два дня насыщенной программы для тела и души</p>
+      </div>
+      
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-semibold text-lg">16 июля 2023</h4>
+              <p class="text-sm text-slate-300">Программа мероприятий</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <i class="fas fa-running text-primary"></i>
+            </div>
+          </div>
+          <ul class="mt-6 space-y-4">
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-primary font-semibold">07:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Утренняя пробежка</div>
+                <div class="text-xs text-slate-400 mt-1">Легкая пробежка по берегу реки</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-primary font-semibold">10:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Сплав на байдарках</div>
+                <div class="text-xs text-slate-400 mt-1">Путешествие по реке с инструктором</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-primary font-semibold">17:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Йога</div>
+                <div class="text-xs text-slate-400 mt-1">Восстановительная практика на закате</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-semibold text-lg">17 июля 2023</h4>
+              <p class="text-sm text-slate-300">Программа мероприятий</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+              <i class="fas fa-heartbeat text-accent"></i>
+            </div>
+          </div>
+          <ul class="mt-6 space-y-4">
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-accent font-semibold">08:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Завтрак & Разбор</div>
+                <div class="text-xs text-slate-400 mt-1">Полезный завтрак и планы на день</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-accent font-semibold">09:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Функциональная тренировка</div>
+                <div class="text-xs text-slate-400 mt-1">Интенсив на все группы мышц</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-12 text-sm text-accent font-semibold">14:00</div>
+              <div>
+                <div class="text-sm text-white font-medium">Танцы</div>
+                <div class="text-xs text-slate-400 mt-1">Латиноамериканские ритмы</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tariffs -->
+    <section id="tariffs" class="mt-20">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">Стоимость</span>
+        <h3 class="text-3xl font-bold">Тарифы</h3>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Выберите подходящий вариант участия</p>
+      </div>
+      
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <h4 class="font-semibold text-lg">Базовый без услуг</h4>
+          <div class="mt-2 text-3xl font-bold">3 500₽</div>
+          <p class="mt-2 text-slate-400 text-sm">Участие во всех мероприятиях, проживание и питание.</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Участие в активностях</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Проживание</li>
+            <li class="flex items-center gap-2"><i class="fas fa-times text-slate-500 text-xs"></i> Питание</li>
+          </ul>
+          <button class="mt-6 w-full py-3 btn-primary rounded-lg font-medium">Выбрать</button>
+        </div>
+
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300 border-2 border-primary/30 relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+            Популярно
+          </div>
+          <h4 class="font-semibold text-lg">Базовый с питанием</h4>
+          <div class="mt-2 text-3xl font-bold">5 500₽</div>
+          <p class="mt-2 text-slate-400 text-sm">3-х разовое питание + все активности.</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Участие в активностях</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Проживание</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> 3-х разовое питание</li>
+          </ul>
+          <button class="mt-6 w-full py-3 btn-primary rounded-lg font-medium">Выбрать</button>
+        </div>
+
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <h4 class="font-semibold text-lg">Номер 2-3 чел</h4>
+          <div class="mt-2 text-3xl font-bold">7 500₽</div>
+          <p class="mt-2 text-slate-400 text-sm">Проживание в 2-3х местном номере, питание и активности.</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Участие в активностях</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Проживание в номере</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> 3-х разовое питание</li>
+          </ul>
+          <button class="mt-6 w-full py-3 border border-dark-border rounded-lg hover:bg-dark-border transition-colors duration-300">Выбрать</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="mt-20">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-2">Отзывы</span>
+        <h3 class="text-3xl font-bold">Что говорят участники</h3>
+      </div>
+      
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white font-bold">АК</div>
+            <div>
+              <h4 class="font-semibold">Анна К.</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"Отличная организация, профессиональные тренеры и прекрасная атмосфера. Обязательно поеду еще раз!"</p>
+        </div>
+        
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white font-bold">МС</div>
+            <div>
+              <h4 class="font-semibold">Михаил С.</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"Сплав на байдарках был просто незабываемым! Отличный способ совместить фитнес и отдых на природе."</p>
+        </div>
+        
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white font-bold">ЕП</div>
+            <div>
+              <h4 class="font-semibold">Елена П.</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">"Йога на рассвете, функциональные тренировки и новые знакомства - все это ждет вас на фитнес-уикенде!"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-20 pb-12">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">Контакты</span>
+        <h3 class="text-3xl font-bold">Остались вопросы?</h3>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Свяжитесь с нами для получения дополнительной информации</p>
+      </div>
+      
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 glass rounded-2xl feature-card transition-all duration-300">
+          <h4 class="font-semibold text-lg">Связаться с нами</h4>
+          <p class="mt-2 text-slate-300">По всем вопросам — телефон или почта.</p>
+          <div class="mt-6 space-y-4 text-sm text-slate-200">
+            <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                <i class="fas fa-phone text-primary"></i>
+              </div>
+              <span>+7 (920) 558-03-03</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-accent"></i>
+              </div>
+              <span>info@fitnessweekend.ru</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-dark-border transition-colors duration-300">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-primary"></i>
+              </div>
+              <span>База отдыха «Алмаз», Московская область</span>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h5 class="font-semibold mb-3">Мы в соцсетях</h5>
+            <div class="flex gap-3">
+              <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                <i class="fab fa-vk"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-dark-border flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactForm" class="p-6 glass rounded-2xl space-y-4 feature-card transition-all duration-300">
+          <div>
+            <label class="block text-sm text-slate-300 mb-1">Имя</label>
+            <input id="name" class="w-full bg-dark-card border border-dark-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Ваше имя" />
+          </div>
+
+          <div>
+            <label class="block text-sm text-slate-300 mb-1">Телефон или почта</label>
+            <input id="contactInput" class="w-full bg-dark-card border border-dark-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Телефон или email" />
+          </div>
+
+          <div>
+            <label class="block text-sm text-slate-300 mb-1">Сообщение</label>
+            <textarea id="message" class="w-full bg-dark-card border border-dark-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" rows="4" placeholder="Хочу забронировать..."></textarea>
+          </div>
+
+          <div class="flex gap-3">
+            <button id="sendBtn" type="button" class="px-6 py-3 btn-primary rounded-lg font-medium flex items-center gap-2">
+              <i class="fas fa-paper-plane"></i>
+              Отправить
+            </button>
+            <button type="reset" class="px-6 py-3 border border-dark-border rounded-lg hover:bg-dark-border transition-colors duration-300">Очистить</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-dark-border mt-12 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-400">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white text-xs">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div>© <span id="year"></span> Fitness Weekend — Все права защищены</div>
+        </div>
+        <div>Разработка и поддержка • <a class="underline hover:text-primary transition-colors duration-300">nekhlopochin.as@mail.ru</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Mobile menu
+    document.getElementById('mobileMenuBtn').addEventListener('click', function(){
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.add('hidden');
+      });
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0');
+        backToTopBtn.classList.add('opacity-100');
+      } else {
+        backToTopBtn.classList.remove('opacity-100');
+        backToTopBtn.classList.add('opacity-0');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Form submission
+    document.getElementById('sendBtn').addEventListener('click', function(){
+      const name = document.getElementById('name').value.trim();
+      const contact = document.getElementById('contactInput').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if(!name || !contact){
+        alert('Пожалуйста, укажите имя и контакт.');
+        return;
+      }
+      
+      // Show loading state
+      const btn = document.getElementById('sendBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+      btn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        alert('Спасибо, ' + name + '! Ваше сообщение отправлено. Мы свяжемся с вами по: ' + contact);
+        document.getElementById('contactForm').reset();
+        
+        // Reset button
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 1500);
+    });
+
+    // Active section highlighting
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active-section');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active-section');
+        }
+      });
+    });
+
+    // Add animation to elements when they come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>

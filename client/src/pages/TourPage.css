@@ -1,0 +1,403 @@
+.tour-page {
+  padding: 2rem 0 4rem;
+}
+
+.tour-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 0;
+}
+
+.tour-page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.tour-page-description {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tour-section {
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tour-section .section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.feature-list {
+  list-style: none;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.feature-list li:hover {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.feature-list i {
+  color: #4CAF50;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.schedule-day h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #4CAF50;
+}
+
+.schedule-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.3s ease;
+}
+
+.schedule-item:hover {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.schedule-time {
+  font-weight: 600;
+  color: #4CAF50;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.schedule-content {
+  flex: 1;
+}
+
+.schedule-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.schedule-location {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.tariffs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Центрирование для 4-7 карточек */
+.tariffs-grid:has(.tariff-card:nth-child(4)):not(:has(.tariff-card:nth-child(8))) {
+  justify-items: center;
+}
+
+.tariffs-grid:has(.tariff-card:nth-child(4)):not(:has(.tariff-card:nth-child(8))) .tariff-card {
+  max-width: 280px;
+  width: 100%;
+}
+
+.tariff-card {
+  background: rgba(71, 85, 105, 0.2);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tariff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+}
+
+.tariff-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tariff-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.tariff-wine {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.tariff-details {
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+}
+
+.tariff-details div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tariff-details i {
+  color: #FF9800;
+}
+
+.tariff-card .btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.leader-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: background 0.3s ease;
+}
+
+.leader-card:hover {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.leader-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4CAF50;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.leader-card h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.leader-card p {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .tariffs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .tour-page {
+    padding: 1rem 0 2rem;
+  }
+
+  .tour-hero {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .tour-page-title {
+    font-size: 1.75rem;
+  }
+
+  .tour-page-description {
+    font-size: 1rem;
+  }
+
+  .tour-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tour-section .section-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .feature-list i {
+    font-size: 1rem;
+  }
+
+  .schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .schedule-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .schedule-time {
+    min-width: auto;
+    font-size: 0.875rem;
+  }
+
+  .tariffs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tariff-card {
+    padding: 1.25rem;
+  }
+
+  .tariff-price {
+    font-size: 1.75rem;
+  }
+
+  .leaders-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .leader-card {
+    padding: 0.75rem;
+  }
+
+  .leader-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+  .tour-page-title {
+    font-size: 1.5rem;
+  }
+
+  .tour-page-description {
+    font-size: 0.875rem;
+  }
+
+  .tour-section {
+    padding: 1rem;
+  }
+
+  .tour-section .section-title {
+    font-size: 1.25rem;
+  }
+
+  .tariff-card {
+    padding: 1rem;
+  }
+
+  .tariff-price {
+    font-size: 1.5rem;
+  }
+
+  .tariff-card .btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Условия */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.conditions-block h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #60a5fa;
+}
+
+.conditions-block h3 i {
+  font-size: 1.5rem;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-item {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(71, 85, 105, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  background: rgba(71, 85, 105, 0.2);
+  border-color: rgba(148, 163, 184, 0.2);
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #f1f5f9;
+}
+
+.faq-question i {
+  color: #60a5fa;
+  font-size: 1.25rem;
+}
+
+.faq-answer {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+}

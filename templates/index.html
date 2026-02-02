@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Усманка-уикенд 20-21 июня 2026</title>
+  <meta name="description" content="Идеи Усманка-уикенда: Танцевальный уикенд, Английский тур, Кулинарный уикенд, Фитнес-уикенд, Фитнес-свидания, Гитара-уикенд" />
+  
+  <!-- Open Graph для соцсетей -->
+  <meta property="og:title" content="Усманка-уикенд 20-21 июня 2026">
+  <meta property="og:description" content="Идеи Усманка-уикенда: Танцевальный уикенд, Английский тур, Кулинарный уикенд, Фитнес-уикенд, Фитнес-свидания, Гитара-уикенд">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',
+            accent: '#FF9800',
+            'dark-bg': '#0a0a0a',
+            'dark-card': '#111111',
+            'dark-border': '#333333'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s infinite'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: #0f172a;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    .glass {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(71, 85, 105, 0.3);
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #4CAF50, #66BB6A);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+    }
+    
+    .btn-primary {
+      background: #4CAF50;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    
+    .btn-primary:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(76, 175, 80, 0.3);
+    }
+    
+    .hero-bg {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(255, 152, 0, 0.05));
+    }
+    
+    /* Улучшенная читаемость */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    p {
+      color: #cbd5e1;
+    }
+    
+    /* Доступность */
+    a:focus, button:focus {
+      outline: 2px solid #4CAF50;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="text-slate-100 antialiased">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <p class="mt-4 text-slate-300">Загрузка...</p>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300 opacity-0">
+    <i class="fas fa-arrow-up text-white"></i>
+  </button>
+
+  <!-- Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-6 sticky top-0 z-30 glass backdrop-blur-md">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white shadow-lg animate-pulse-slow">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold leading-tight">Усманка-уикенд</h1>
+          <p class="text-xs text-slate-400">20–21 июня 2026</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#tours" class="hover:text-primary transition-colors duration-300 nav-link">Туры</a>
+        <a href="#about" class="hover:text-primary transition-colors duration-300 nav-link">О нас</a>
+        <a href="#contact" class="px-4 py-2 btn-primary rounded-lg shadow text-white font-medium">Связаться</a>
+      </nav>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded bg-white/5 hover:bg-white/10 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M2 4.5A1.5 1.5 0 013.5 3h13A1.5 1.5 0 0118 4.5v.5H2v-.5zM2 9.5h16v.5a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 012 10v-.5zM2 14.5h16v.5A1.5 1.5 0 0116.5 16h-13A1.5 1.5 0 012 15v-.5z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden mb-6">
+      <div class="flex flex-col gap-3 bg-dark-card p-4 rounded-lg glass border border-dark-border">
+        <a href="#tours" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">Туры</a>
+        <a href="#about" class="py-2 px-3 rounded hover:bg-white/5 transition-colors duration-300">О нас</a>
+        <a href="#contact" class="py-2 px-3 btn-primary rounded text-center text-white font-medium">Связаться</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="text-center mt-10 animate-fade-in hero-bg py-16 rounded-3xl">
+      <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">📍 Воронеж • Усманка • 20-21 июня 2026</span>
+      <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        Уикенды на <span class="gradient-text">Усманке</span>
+      </h2>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-6">
+        Активный отдых на природе в Воронежской области. Выберите свой формат: танцы, английский, кулинария, фитнес, знакомства или гитара
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-bus text-primary"></i>
+          <span>Трансфер из Воронежа</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-utensils text-primary"></i>
+          <span>Питание включено</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-bed text-primary"></i>
+          <span>Размещение на выбор</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours Grid -->
+    <section id="tours" class="mt-20">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-2">Выберите тур</span>
+        <h3 class="text-3xl font-bold">Все туры</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Танцевальный девичник -->
+        <a href="/tour/dance" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              1-2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/4CAF50/FFFFFF?text=Танцевальный+девичник" alt="Танцевальный девичник" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Танцевальный девичник</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Хореография от профессионала, видеосъёмка у замка принцессы Ольденбургской, йога и винная дегустация</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 6 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+
+        <!-- Английская Усманка -->
+        <a href="/tour/english" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/FF9800/FFFFFF?text=Английская+Усманка" alt="Английская Усманка" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Английская Усманка</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Полное погружение в английский на природе: уроки, игры, экскурсии и квесты на английском языке</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 6 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+
+        <!-- Кулинарная Усманка -->
+        <a href="/tour/culinary" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/9C27B0/FFFFFF?text=Кулинарная+Усманка" alt="Кулинарная Усманка" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Кулинарная Усманка</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Мастер-классы от шеф-повара: высокая кухня на костре, винная дегустация и гастрономическая экскурсия</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 8 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+
+        <!-- Фитнес Усманка -->
+        <a href="/tour/fitness" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/2196F3/FFFFFF?text=Фитнес+Усманка" alt="Фитнес Усманка" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Фитнес Усманка</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Активный уикенд: йога, танцы, групповые тренировки, сплавы на байдарках и консультации по питанию</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 8 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+
+        <!-- Фитнес-свидания -->
+        <a href="/tour/fitness-dating" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Фитнес-свидания" alt="Фитнес-свидания" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Фитнес-свидания</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Знакомства через спорт: парные тренировки, йога вдвоём, совместные квесты и романтичные сплавы</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 10 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+
+        <!-- Гитара-Усманка -->
+        <a href="/tour/guitar" class="glass p-6 rounded-2xl feature-card transition-all duration-300 block group">
+          <div class="relative overflow-hidden rounded-lg mb-4">
+            <div class="absolute top-3 right-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+              1-2 дня
+            </div>
+            <img src="https://via.placeholder.com/600x400/FF5722/FFFFFF?text=Гитара-Усманка" alt="Гитара-Усманка" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <h4 class="font-semibold text-xl mb-2 group-hover:text-primary transition-colors">Гитара-Усманка</h4>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">Научитесь играть на гитаре с нуля за выходные. Исполните свою первую песню у костра под звёздами</p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-700">
+            <span class="text-primary font-bold text-lg">от 5 000₽</span>
+            <span class="text-slate-400 text-sm group-hover:text-primary transition-colors">Подробнее →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="mt-20">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">Отзывы</span>
+        <h3 class="text-3xl font-bold">Что говорят участники</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl feature-card transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white">
+              А
+            </div>
+            <div>
+              <h4 class="font-semibold">Анна</h4>
+              <div class="flex text-accent text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">
+            Танцевальный уикенд превзошёл все ожидания! Вика - потрясающий хореограф, а видео получились просто волшебными. Обязательно вернусь!
+          </p>
+        </div>
+
+        <div class="glass p-6 rounded-2xl feature-card transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white">
+              М
+            </div>
+            <div>
+              <h4 class="font-semibold">Михаил</h4>
+              <div class="flex text-accent text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">
+            Английская Усманка - это нечто! Два дня полного погружения в язык на природе. Выучил больше слов, чем за месяц занятий. Рекомендую!
+          </p>
+        </div>
+
+        <div class="glass p-6 rounded-2xl feature-card transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white">
+              Е
+            </div>
+            <div>
+              <h4 class="font-semibold">Елена</h4>
+              <div class="flex text-accent text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm">
+            Кулинарный тур - это любовь! Научилась готовить блюда высокой кухни, попробовала потрясающие вина. Атмосфера невероятная!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Location -->
+    <section id="about" class="mt-20">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">О месте</span>
+        <h3 class="text-3xl font-bold">Усманка — природа Воронежской области</h3>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="glass p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-2">Удобное расположение</h4>
+              <p class="text-slate-300 text-sm">Отправление от пл. Ленина в Воронеже в 09:00. Дорога занимает около часа. Возвращение в тот же день или на следующий — на ваш выбор</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-tree text-accent text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-2">Живописная природа</h4>
+              <p class="text-slate-300 text-sm">Усманский бор, река Усманка, замок принцессы Ольденбургской в Рамони. Идеальное место для активного отдыха и фотосессий</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-users text-primary text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-2">Профессиональные ведущие</h4>
+              <p class="text-slate-300 text-sm">Опытные инструкторы, хореографы, преподаватели английского, шеф-повара и сомелье. Каждый тур — это качественное обучение</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass p-6 rounded-2xl">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-alt text-accent text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-lg mb-2">Безопасность и комфорт</h4>
+              <p class="text-slate-300 text-sm">Организованный трансфер, проверенное размещение, качественное питание. Возврат 100% при отмене за 95+ дней</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-20 pb-12">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium mb-2">Контакты</span>
+        <h3 class="text-3xl font-bold">Остались вопросы?</h3>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Свяжитесь с нами для получения дополнительной информации</p>
+      </div>
+      
+      <div class="mt-6 max-w-2xl mx-auto p-6 glass rounded-2xl feature-card transition-all duration-300">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 p-4 rounded-lg hover:bg-dark-border transition-colors duration-300">
+            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-primary"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 mb-1">Телефон для связи</div>
+              <a href="tel:+79001234567" class="text-lg font-semibold hover:text-primary transition-colors">+7 (900) 123-45-67</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-lg hover:bg-dark-border transition-colors duration-300">
+            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-accent"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 mb-1">Email</div>
+              <a href="mailto:info@usmanka-weekend.ru" class="text-lg font-semibold hover:text-accent transition-colors">info@usmanka-weekend.ru</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-lg hover:bg-dark-border transition-colors duration-300">
+            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-primary"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 mb-1">Место отправления</div>
+              <div class="text-lg font-semibold">пл. Ленина, Воронеж</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-700 mt-16 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-bold text-white">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="font-bold text-lg">Усманка-уикенд</div>
+          </div>
+          <p class="text-slate-400 text-sm">Активные туры выходного дня на природе Воронежской области</p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Быстрые ссылки</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#tours" class="hover:text-primary transition-colors">Все туры</a></li>
+            <li><a href="#about" class="hover:text-primary transition-colors">О месте</a></li>
+            <li><a href="#testimonials" class="hover:text-primary transition-colors">Отзывы</a></li>
+            <li><a href="#contact" class="hover:text-primary transition-colors">Контакты</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Контакты</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-phone text-primary"></i>
+              <a href="tel:+79001234567" class="hover:text-primary transition-colors">+7 (900) 123-45-67</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-envelope text-primary"></i>
+              <a href="mailto:info@usmanka-weekend.ru" class="hover:text-primary transition-colors">info@usmanka-weekend.ru</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-primary"></i>
+              <span>г. Воронеж, пл. Ленина</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
+        <div>© <span id="year"></span> Усманка-уикенд. Все права защищены</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-primary transition-colors">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-primary transition-colors">Договор оферты</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Mobile menu
+    document.getElementById('mobileMenuBtn').addEventListener('click', function(){
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('hidden');
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0');
+        backToTopBtn.classList.add('opacity-100');
+      } else {
+        backToTopBtn.classList.remove('opacity-100');
+        backToTopBtn.classList.add('opacity-0');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+</body>
+</html>

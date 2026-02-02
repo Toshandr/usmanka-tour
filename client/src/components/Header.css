@@ -1,0 +1,174 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #4CAF50, #FF9800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.logo-text h1 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.logo-text p {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav a:not(.btn):hover {
+  color: #4CAF50;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: background 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem 0;
+  }
+
+  .logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  .logo-text p {
+    font-size: 0.6875rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(30, 41, 59, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav a {
+    width: 100%;
+    text-align: center;
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.125rem;
+  }
+
+  .logo-text h1 {
+    font-size: 0.9375rem;
+  }
+
+  .logo-text p {
+    font-size: 0.625rem;
+  }
+
+  .nav {
+    padding: 1.25rem;
+  }
+
+  .nav a {
+    padding: 0.75rem;
+    font-size: 0.9375rem;
+  }
+}
