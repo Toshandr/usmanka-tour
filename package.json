@@ -10,7 +10,9 @@
     "build": "cd client && npm run build",
     "start": "node server/index.js",
     "install-all": "npm install && cd client && npm install",
-    "test-email": "node test-email.js"
+    "test-email": "node test-email.js",
+    "build:static": "cd client && npm run build",
+    "netlify": "cd client && npm install && npm run build"
   },
   "keywords": [
     "tours",

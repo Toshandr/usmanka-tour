@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build files (keep only client/build)
+server/
+data/
+source/
+public/
+static/
+templates/
+main.py
+config.py
+test-email.js
+*.md
+.env
+.env.local
+
+# Keep only what Netlify needs
+!client/
+!client/build/
+!netlify.toml
+!.gitignore
