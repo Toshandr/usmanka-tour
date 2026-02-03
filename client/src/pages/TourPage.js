@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import BookingModal from '../components/BookingModal';
+import { toursData } from '../data/toursData';
 import './TourPage.css';
 
 const TourPage = () => {
@@ -22,18 +22,10 @@ const TourPage = () => {
   };
 
   useEffect(() => {
-    const fetchTour = async () => {
-      try {
-        const response = await axios.get(`/api/tours/${tourId}`);
-        setTour(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Ошибка загрузки тура:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchTour();
+    // Use local data instead of API
+    const tour = toursData[tourId];
+    setTour(tour || null);
+    setLoading(false);
   }, [tourId]);
 
   if (loading) {
@@ -54,6 +46,32 @@ const TourPage = () => {
       </div>
     );
   }
+
+  // Normalize conditions & faq so we support multiple data shapes
+  const included = tour.conditions?.included || tour.included || [];
+
+  const toBring = (() => {
+    if (tour.conditions?.toBring) return tour.conditions.toBring;
+    if (!tour.what_to_bring) return [];
+    // if what_to_bring is an array of groups with items, flatten
+    if (Array.isArray(tour.what_to_bring) && tour.what_to_bring.length && typeof tour.what_to_bring[0] === 'object') {
+      return tour.what_to_bring.flatMap((g) => g.items || []);
+    }
+    return tour.what_to_bring;
+  })();
+
+  const faqList = (() => {
+    if (Array.isArray(tour.faq) && tour.faq.length) {
+      // if items already have question/answer
+      if (tour.faq[0] && tour.faq[0].question) return tour.faq;
+      // otherwise assume array of strings
+      return tour.faq.map((q) => ({ question: q, answer: '' }));
+    }
+    if (Array.isArray(tour.faq_extra) && tour.faq_extra.length) {
+      return tour.faq_extra.map((q) => ({ question: q, answer: '' }));
+    }
+    return [];
+  })();
 
   return (
     <div className="tour-page">
@@ -179,14 +197,14 @@ const TourPage = () => {
         </section>
 
         {/* Условия */}
-        {tour.conditions && (
+        {(included.length > 0 || toBring.length > 0) && (
           <section className="tour-section glass">
             <h2 className="section-title">7. Условия</h2>
             <div className="conditions-grid">
               <div className="conditions-block">
                 <h3><i className="fas fa-check-circle"></i> Включено в тур:</h3>
                 <ul className="feature-list">
-                  {tour.conditions.included.map((item, index) => (
+                  {included.map((item, index) => (
                     <li key={index}>
                       <i className="fas fa-check"></i>
                       <span>{item}</span>
@@ -197,7 +215,7 @@ const TourPage = () => {
               <div className="conditions-block">
                 <h3><i className="fas fa-suitcase"></i> Необходимо взять с собой:</h3>
                 <ul className="feature-list">
-                  {tour.conditions.toBring.map((item, index) => (
+                  {toBring.map((item, index) => (
                     <li key={index}>
                       <i className="fas fa-arrow-right"></i>
                       <span>{item}</span>
@@ -210,17 +228,17 @@ const TourPage = () => {
         )}
 
         {/* FAQ */}
-        {tour.faq && (
+        {faqList.length > 0 && (
           <section className="tour-section glass">
             <h2 className="section-title">8. FAQ</h2>
             <div className="faq-list">
-              {tour.faq.map((item, index) => (
+              {faqList.map((item, index) => (
                 <div key={index} className="faq-item">
                   <h4 className="faq-question">
                     <i className="fas fa-question-circle"></i>
                     {item.question}
                   </h4>
-                  <p className="faq-answer">{item.answer}</p>
+                  {item.answer && <p className="faq-answer">{item.answer}</p>}
                 </div>
               ))}
             </div>

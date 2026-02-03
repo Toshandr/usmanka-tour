@@ -30,11 +30,11 @@ const Header = () => {
           </Link>
 
           <nav className={`nav ${isMobileMenuOpen ? 'open' : ''}`}>
-            <Link to="/#tours" onClick={() => setIsMobileMenuOpen(false)}>Туры</Link>
-            <Link to="/#about" onClick={() => setIsMobileMenuOpen(false)}>О нас</Link>
-            <Link to="/#contact" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="#tours" onClick={() => setIsMobileMenuOpen(false)}>Туры</a>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>О нас</a>
+            <a href="#contact" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
               Связаться
-            </Link>
+            </a>
           </nav>
 
           <button 

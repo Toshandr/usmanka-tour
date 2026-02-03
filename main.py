@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 import os
 from data.tours import tours_data
 from config import (
@@ -13,6 +14,15 @@ app = FastAPI(
     title="Усманка-уикенд",
     description="Активные туры выходного дня на природе Воронежской области",
     version="1.0.0"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -50,6 +60,11 @@ async def tour_page(request: Request, tour_key: str):
         "event_date": EVENT_DATE,
         "departure_place": DEPARTURE_PLACE
     })
+
+@app.get("/api/tours")
+async def get_tours():
+    """API endpoint для получения всех туров"""
+    return tours_data
 
 @app.post("/api/booking")
 async def create_booking(

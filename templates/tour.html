@@ -306,19 +306,88 @@
   <script src="/static/js/common.js"></script>
   <script>
     document.body.dataset.tourType = '{{ tour_key }}';
-    
-    // Add event listeners to booking buttons
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.booking-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          const tour = this.dataset.tour;
-          const tariff = this.dataset.tariff;
-          const price = parseInt(this.dataset.price);
-          openPayment(tour, tariff, price);
-        });
-      });
-    });
   </script>
 
-</body>
+  <!-- 7. Условия -->
+  {% set included = [] %}
+      {% set toBring = [] %}
+      {% if tour is defined %}
+        {% if tour.conditions is defined and tour.conditions.included is defined %}
+          {% set included = tour.conditions.included %}
+        {% elif tour.included is defined %}
+          {% set included = tour.included %}
+        {% endif %}
+
+        {% if tour.conditions is defined and tour.conditions.toBring is defined %}
+          {% set toBring = tour.conditions.toBring %}
+        {% elif tour.what_to_bring is defined %}
+          {% set toBring = tour.what_to_bring %}
+        {% endif %}
+      {% endif %}
+
+      {% if included | length > 0 or toBring | length > 0 %}
+      <section class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
+        <h3 class="text-2xl font-bold mb-6">7. Условия</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-semibold mb-3">Включено в тур:</h4>
+            <ul class="space-y-2 text-slate-300">
+              {% for item in included %}
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span>{{ item }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-3">Необходимо взять с собой:</h4>
+            <ul class="space-y-2 text-slate-300">
+              {% if toBring and toBring[0] is mapping %}
+                {% for group in toBring %}
+                  {% for it in group.items %}
+                  <li class="flex items-start gap-3">
+                    <i class="fas fa-arrow-right text-accent mt-1"></i>
+                    <span>{{ it }}</span>
+                  </li>
+                  {% endfor %}
+                {% endfor %}
+              {% else %}
+                {% for item in toBring %}
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-arrow-right text-accent mt-1"></i>
+                  <span>{{ item }}</span>
+                </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      <!-- 8. FAQ -->
+      {% if tour.faq or tour.faq_extra %}
+      <section id="contact" class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
+        <h3 class="text-2xl font-bold mb-6">8. FAQ</h3>
+        <div class="space-y-4">
+          {% if tour.faq is defined and tour.faq %}
+            {% for q in tour.faq %}
+            <div class="p-4 rounded-lg bg-dark-card">
+              <h4 class="font-semibold mb-2">{{ q.question }}</h4>
+              <p class="text-slate-300 text-sm">{{ q.answer }}</p>
+            </div>
+            {% endfor %}
+          {% endif %}
+          {% if tour.faq_extra is defined and tour.faq_extra %}
+            {% for i in range(0, tour.faq_extra|length, 2) %}
+            <div class="p-4 rounded-lg bg-dark-card">
+              <h4 class="font-semibold mb-2">{{ tour.faq_extra[i] }}</h4>
+              <p class="text-slate-300 text-sm">{{ tour.faq_extra[i+1] }}</p>
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
 </html>

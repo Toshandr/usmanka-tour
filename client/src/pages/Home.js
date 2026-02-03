@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import TourCard from '../components/TourCard';
+import { toursData } from '../data/toursData';
 import './Home.css';
 
 const Home = () => {
@@ -8,31 +8,31 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTours = async () => {
-      try {
-        const response = await axios.get('/api/tours');
-        setTours(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Ошибка загрузки туров:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchTours();
+    // Use local data instead of API
+    setTours(toursData);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
-    // Обработка якорей при переходе с других страниц
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
+    // Обработка якорей при переходе с других страниц или клике на якорь
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    };
+
+    // Обработка при загрузке
+    handleHashChange();
+
+    // Обработка при изменении хеша
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, [loading]);
 
   if (loading) {
