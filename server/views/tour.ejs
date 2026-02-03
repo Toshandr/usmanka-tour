@@ -270,9 +270,58 @@
       </div>
       <% } %>
 
-      <% if (tour.faq_extra && tour.faq_extra.length >= 2) { %>
+      <% /* Conditions section */ %>
+      <% if (tour.conditions && ((tour.conditions.included && tour.conditions.included.length) || (tour.conditions.toBring && tour.conditions.toBring.length))) { %>
+      <div class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
+        <h3 class="text-2xl font-bold mb-6">Условия</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <% if (tour.conditions.included && tour.conditions.included.length) { %>
+          <div class="conditions-block">
+            <h4 class="text-xl font-semibold mb-4">Включено в тур</h4>
+            <ul class="space-y-2 text-slate-300">
+              <% tour.conditions.included.forEach(function(item) { %>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check text-primary mt-1"></i>
+                <span><%= item %></span>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+          <% } %>
+
+          <% if (tour.conditions.toBring && tour.conditions.toBring.length) { %>
+          <div class="conditions-block">
+            <h4 class="text-xl font-semibold mb-4">Что взять с собой</h4>
+            <ul class="space-y-2 text-slate-300">
+              <% tour.conditions.toBring.forEach(function(item) { %>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-circle text-primary text-[6px] mt-2"></i>
+                <span><%= item %></span>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <% } %>
+
+      <% /* Full FAQ section */ %>
+      <% if (tour.faq && tour.faq.length) { %>
       <section id="contact" class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
-        <h3 class="text-2xl font-bold mb-6"><%= (tour.included && tour.included.length) || (tour.what_to_bring && tour.what_to_bring.length) ? '9' : '7' %>. FAQ</h3>
+        <h3 class="text-2xl font-bold mb-6">FAQ</h3>
+        <div class="faq-list">
+          <% tour.faq.forEach(function(item) { %>
+          <div class="faq-item">
+            <div class="faq-question font-semibold text-slate-100"><i class="fas fa-question-circle mr-3 text-primary"></i><%= item.question %></div>
+            <div class="faq-answer mt-2 text-slate-300 text-sm"><%= item.answer %></div>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+      <% } else if (tour.faq_extra && tour.faq_extra.length >= 2) { %>
+      <section id="contact" class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
+        <h3 class="text-2xl font-bold mb-6">FAQ</h3>
         <div class="space-y-4">
           <% for (var i = 0; i < tour.faq_extra.length; i += 2) { %>
           <div class="p-4 rounded-lg bg-dark-card">
@@ -284,7 +333,7 @@
       </section>
       <% } else { %>
       <section id="contact" class="glass p-8 rounded-2xl mb-10 feature-card transition-all">
-        <h3 class="text-2xl font-bold mb-6"><%= (tour.included && tour.included.length) || (tour.what_to_bring && tour.what_to_bring.length) ? '9' : '7' %>. Контакты</h3>
+        <h3 class="text-2xl font-bold mb-6">Контакты</h3>
         <p class="text-slate-300">Телефон: <a href="tel:<%= contact_phone.replace(/\s/g, '') %>" class="text-primary"><%= contact_phone %></a>. Email: <a href="mailto:<%= contact_email %>" class="text-primary"><%= contact_email %></a>. Место отправления: <%= departure_place %>.</p>
       </section>
       <% } %>

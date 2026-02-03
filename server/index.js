@@ -58,7 +58,9 @@ function prepareTourForTemplate(tour, tourKey) {
     leaders: tour.leaders || [],
     included: tour.included || [],
     what_to_bring: tour.what_to_bring || [],
-    faq_extra: faq_extra
+    faq_extra: faq_extra,
+    conditions: tour.conditions || { included: [], toBring: [] },
+    faq: tour.faq || []
   };
 }
 
