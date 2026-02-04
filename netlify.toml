@@ -1,42 +1,19 @@
-# Netlify configuration for static site deployment
-
 [build]
   publish = "client/build"
   command = "cd client && npm install && npm run build"
 
-[context.production]
-  environment = { NODE_VERSION = "18.17.0" }
+[build.environment]
+  NODE_VERSION = "18"
 
-# Important: Redirect all non-file requests to index.html for React Router
-# This rule must be last to catch all unmatched routes
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
-# Cache headers for optimal performance
-[[headers]]
-  for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+[functions]
+  directory = "netlify/functions"
