@@ -111,6 +111,22 @@
   color: #4CAF50;
 }
 
+.footer-link-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.footer-link-btn:hover {
+  color: #4CAF50;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 2rem 0 1rem;
@@ -170,6 +186,10 @@
   }
 
   .footer-links a {
+    font-size: 0.8125rem;
+  }
+
+  .footer-link-btn {
     font-size: 0.8125rem;
   }
 }

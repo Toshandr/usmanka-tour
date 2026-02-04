@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -55,8 +54,8 @@ const Footer = () => {
             © {currentYear} Усманка-уикенд. Все права защищены
           </div>
           <div className="footer-links">
-            <a href="#">Политика конфиденциальности</a>
-            <a href="#">Договор оферты</a>
+            <button type="button" className="footer-link-btn">Политика конфиденциальности</button>
+            <button type="button" className="footer-link-btn">Договор оферты</button>
           </div>
         </div>
       </div>
