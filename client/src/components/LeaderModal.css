@@ -1,0 +1,239 @@
+.leader-modal-content {
+  max-width: 800px;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.leader-modal-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+}
+
+/* Левая часть - фото, имя, роль */
+.leader-modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.leader-modal-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(76, 175, 80, 0.3);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.leader-modal-icon {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4CAF50;
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.leader-modal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.leader-modal-role {
+  font-size: 1rem;
+  color: #4CAF50;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Правая часть - информация */
+.leader-modal-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.leader-story {
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px dashed rgba(76, 175, 80, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.leader-story p {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.leader-modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+}
+
+.leader-modal-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leader-modal-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(71, 85, 105, 0.2);
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.leader-modal-details li:hover {
+  background: rgba(71, 85, 105, 0.3);
+}
+
+.leader-modal-details i {
+  color: #4CAF50;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.leader-modal-details span {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.leader-modal-no-details {
+  color: #94a3b8;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .leader-modal-content {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .leader-modal-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .leader-modal-image,
+  .leader-modal-icon {
+    width: 150px;
+    height: 150px;
+  }
+
+  .leader-modal-icon {
+    font-size: 4rem;
+  }
+
+  .leader-modal-name {
+    font-size: 1.25rem;
+  }
+
+  .leader-modal-role {
+    font-size: 0.875rem;
+  }
+
+  .leader-story {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .leader-story p {
+    font-size: 0.875rem;
+  }
+
+  .leader-modal-title {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .leader-modal-details li {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .leader-modal-details span {
+    font-size: 0.875rem;
+  }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+  .leader-modal-content {
+    padding: 1.25rem;
+  }
+
+  .leader-modal-layout {
+    gap: 1.25rem;
+  }
+
+  .leader-modal-image,
+  .leader-modal-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .leader-modal-icon {
+    font-size: 3rem;
+  }
+
+  .leader-modal-name {
+    font-size: 1.125rem;
+  }
+
+  .leader-modal-role {
+    font-size: 0.8125rem;
+  }
+
+  .leader-story {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .leader-story p {
+    font-size: 0.8125rem;
+  }
+
+  .leader-modal-title {
+    font-size: 1rem;
+  }
+
+  .leader-modal-details li {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .leader-modal-details span {
+    font-size: 0.8125rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BookingModal from '../components/BookingModal';
+import LeaderModal from '../components/LeaderModal';
 import { toursData } from '../data/toursData';
 import './TourPage.css';
 
@@ -10,6 +11,8 @@ const TourPage = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTariff, setSelectedTariff] = useState(null);
+  const [isLeaderModalOpen, setIsLeaderModalOpen] = useState(false);
+  const [selectedLeader, setSelectedLeader] = useState(null);
 
   const handleBooking = (tariff) => {
     setSelectedTariff(tariff);
@@ -19,6 +22,16 @@ const TourPage = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedTariff(null);
+  };
+
+  const handleLeaderClick = (leader) => {
+    setSelectedLeader(leader);
+    setIsLeaderModalOpen(true);
+  };
+
+  const closeLeaderModal = () => {
+    setIsLeaderModalOpen(false);
+    setSelectedLeader(null);
   };
 
   useEffect(() => {
@@ -300,13 +313,26 @@ const TourPage = () => {
           <h2 className="section-title">6. Ведущие</h2>
           <div className="leaders-grid">
             {tour.leaders.map((leader, index) => (
-              <div key={index} className="leader-card">
-                <div className="leader-icon">
-                  <i className="fas fa-user"></i>
-                </div>
-                <div>
+              <div 
+                key={index} 
+                className="leader-card clickable"
+                onClick={() => handleLeaderClick(leader)}
+              >
+                {leader.image ? (
+                  <img src={leader.image} alt={leader.name} className="leader-image" />
+                ) : (
+                  <div className="leader-icon">
+                    <i className="fas fa-user"></i>
+                  </div>
+                )}
+                <div className="leader-info">
                   <h4>{leader.name}</h4>
                   <p>{leader.role}</p>
+                  {leader.details && leader.details.length > 0 && (
+                    <span className="leader-more">
+                      <i className="fas fa-info-circle"></i> Подробнее
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -370,6 +396,15 @@ const TourPage = () => {
           onClose={closeModal}
           tour={tour}
           tariff={selectedTariff}
+        />
+      )}
+
+      {/* Модальное окно ведущего */}
+      {isLeaderModalOpen && selectedLeader && (
+        <LeaderModal
+          isOpen={isLeaderModalOpen}
+          onClose={closeLeaderModal}
+          leader={selectedLeader}
         />
       )}
     </div>
