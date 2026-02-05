@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './BookingModal.css';
 
 const BookingModal = ({ isOpen, onClose, tour, tariff }) => {
@@ -37,31 +36,49 @@ const BookingModal = ({ isOpen, onClose, tour, tariff }) => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post('/api/booking', {
-        ...formData,
-        tour: tour.id,
-        tariff: tariff.name,
-        amount: tariff.price
-      });
+      // For GitHub Pages deployment - simulate booking
+      // In production, replace with your preferred booking service
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Create mailto link for fallback
+      const subject = encodeURIComponent(`Бронирование: ${tour.shortTitle} - ${tariff.name}`);
+      const body = encodeURIComponent(
+        `Здравствуйте!\n\n` +
+        `Хочу забронировать тур:\n` +
+        `Тур: ${tour.shortTitle}\n` +
+        `Тариф: ${tariff.name}\n` +
+        `Стоимость: ${tariff.price.toLocaleString('ru-RU')} ₽\n` +
+        `${tariff.wine > 0 ? `Винная дегустация: +${tariff.wine.toLocaleString('ru-RU')} ₽\n` : ''}` +
+        `\nМои контакты:\n` +
+        `Имя: ${formData.name}\n` +
+        `Телефон: ${formData.phone}\n` +
+        `Email: ${formData.email}\n\n` +
+        `С уважением,\n${formData.name}`
+      );
+      
+      // Open email client
+      window.location.href = `mailto:info@usmanka-weekend.ru?subject=${subject}&body=${body}`;
 
       setMessage({
         type: 'success',
-        text: response.data.message || 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.'
+        text: 'Заявка подготовлена! Откроется почтовый клиент для отправки. Или свяжитесь с нами по телефону +7 (900) 123-45-67'
       });
 
       // Очистка формы
       setFormData({ name: '', phone: '', email: '' });
 
-      // Закрытие модального окна через 3 секунды
+      // Закрытие модального окна через 5 секунд
       setTimeout(() => {
         onClose();
         setMessage({ type: '', text: '' });
-      }, 3000);
+      }, 5000);
 
     } catch (error) {
       setMessage({
         type: 'error',
-        text: error.response?.data?.error || 'Ошибка при отправке заявки. Попробуйте позже.'
+        text: 'Ошибка при подготовке заявки. Свяжитесь с нами по телефону +7 (900) 123-45-67'
       });
     } finally {
       setLoading(false);
