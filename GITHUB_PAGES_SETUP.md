@@ -13,11 +13,21 @@
    - Перейдите в Settings репозитория
    - Найдите раздел "Pages"
    - В "Source" выберите "GitHub Actions"
+   - **Важно**: Убедитесь, что в Settings → Actions → General разрешены "Read and write permissions"
 
 3. **Автоматический деплой**
    - При каждом push в main ветку сайт будет автоматически обновляться
    - Процесс займет 2-3 минуты
    - Сайт будет доступен по адресу: `https://ваш-username.github.io/название-репозитория`
+
+## Настройка разрешений (важно!)
+
+Если деплой не работает, проверьте разрешения:
+
+1. **Settings → Actions → General**
+2. В разделе "Workflow permissions" выберите:
+   - ✅ "Read and write permissions"
+   - ✅ "Allow GitHub Actions to create and approve pull requests"
 
 ## Ручной деплой (альтернатива)
 
@@ -34,7 +44,7 @@ npm run deploy
 
 ✅ **React Router** переключен на HashRouter для GitHub Pages  
 ✅ **404.html** создан для поддержки SPA  
-✅ **GitHub Actions** настроен для автоматического деплоя  
+✅ **GitHub Actions** настроен с правильными разрешениями  
 ✅ **Бронирование** работает через mailto (без бэкенда)  
 ✅ **Все зависимости** от сервера убраны  
 
@@ -54,4 +64,16 @@ npm run deploy
 Если что-то не работает:
 1. Проверьте Actions в GitHub (вкладка Actions)
 2. Убедитесь, что GitHub Pages включен
-3. Проверьте, что main ветка содержит все файлы
+3. Проверьте разрешения Actions (Settings → Actions → General)
+4. Убедитесь, что main ветка содержит все файлы
+
+## Альтернативный способ (если Actions не работают)
+
+Можно использовать ручной деплой через gh-pages:
+
+```bash
+# В папке client
+npm run deploy
+```
+
+Это создаст ветку `gh-pages` и загрузит туда собранные файлы.
