@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,28 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (sectionId) => {
+    setIsMobileMenuOpen(false);
+    
+    // Если мы не на главной странице, сначала переходим на неё
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Ждём немного, чтобы страница загрузилась, затем скроллим
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Если уже на главной, просто скроллим
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -30,11 +54,27 @@ const Header = () => {
           </Link>
 
           <nav className={`nav ${isMobileMenuOpen ? 'open' : ''}`}>
-            <a href="#tours" onClick={() => setIsMobileMenuOpen(false)}>Туры</a>
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>О нас</a>
-            <a href="#contact" className="btn btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
+            <button 
+              type="button" 
+              className="nav-link"
+              onClick={() => handleNavClick('tours')}
+            >
+              Туры
+            </button>
+            <button 
+              type="button" 
+              className="nav-link"
+              onClick={() => handleNavClick('about')}
+            >
+              О нас
+            </button>
+            <button 
+              type="button" 
+              className="nav-link btn btn-primary"
+              onClick={() => handleNavClick('contact')}
+            >
               Связаться
-            </a>
+            </button>
           </nav>
 
           <button 

@@ -1,0 +1,142 @@
+.success-modal-content {
+  max-width: 400px;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.success-icon {
+  margin-bottom: 0.5rem;
+}
+
+.success-circle {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  animation: successPulse 0.6s ease-out;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-message h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.75rem;
+}
+
+.success-message p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+  max-width: 320px;
+}
+
+.success-btn {
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9375rem;
+}
+
+.success-btn:hover {
+  background: linear-gradient(135deg, #45a049, #4CAF50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.success-btn:active {
+  transform: translateY(0);
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .success-modal-content {
+    max-width: 350px;
+    padding: 1.5rem;
+  }
+
+  .success-content {
+    gap: 1.25rem;
+  }
+
+  .success-circle {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.75rem;
+  }
+
+  .success-message h2 {
+    font-size: 1.25rem;
+  }
+
+  .success-message p {
+    font-size: 0.875rem;
+  }
+
+  .success-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
+  .success-modal-content {
+    max-width: 320px;
+    padding: 1.25rem;
+  }
+
+  .success-content {
+    gap: 1rem;
+  }
+
+  .success-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+
+  .success-message h2 {
+    font-size: 1.125rem;
+  }
+
+  .success-message p {
+    font-size: 0.8125rem;
+    max-width: 280px;
+  }
+}

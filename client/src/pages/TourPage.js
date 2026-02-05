@@ -28,6 +28,79 @@ const TourPage = () => {
     setLoading(false);
   }, [tourId]);
 
+  // Функция для получения иконок и особенностей каждого тура
+  const getTourHeroData = (tourId) => {
+    const heroData = {
+      dance: {
+        icon: 'fas fa-music',
+        badge: '💃 Танцы • Видео • Йога',
+        features: [
+          { icon: 'fas fa-video', text: 'Профессиональная видеосъёмка' },
+          { icon: 'fas fa-wine-glass', text: 'Винная дегустация' },
+          { icon: 'fas fa-heart', text: 'Йога и релакс' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(139, 195, 74, 0.1))',
+        accentColor: '#4CAF50'
+      },
+      english: {
+        icon: 'fas fa-globe',
+        badge: '🇬🇧 English • Игры • Квесты',
+        features: [
+          { icon: 'fas fa-comments', text: 'Полное погружение в язык' },
+          { icon: 'fas fa-gamepad', text: 'Интерактивные игры' },
+          { icon: 'fas fa-map-marked-alt', text: 'Квесты на английском' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(255, 152, 0, 0.15), rgba(255, 193, 7, 0.1))',
+        accentColor: '#FF9800'
+      },
+      culinary: {
+        icon: 'fas fa-utensils',
+        badge: '👨‍🍳 Кулинария • Шеф-повар • Дегустация',
+        features: [
+          { icon: 'fas fa-fire', text: 'Готовка на костре' },
+          { icon: 'fas fa-award', text: 'Мастер-классы шеф-повара' },
+          { icon: 'fas fa-wine-bottle', text: 'Сочетание вин с блюдами' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(233, 30, 99, 0.1))',
+        accentColor: '#9C27B0'
+      },
+      fitness: {
+        icon: 'fas fa-dumbbell',
+        badge: '💪 Фитнес • Йога • Активность',
+        features: [
+          { icon: 'fas fa-running', text: 'Групповые тренировки' },
+          { icon: 'fas fa-leaf', text: 'Йога на природе' },
+          { icon: 'fas fa-ship', text: 'Сплавы на байдарках' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(3, 169, 244, 0.1))',
+        accentColor: '#2196F3'
+      },
+      'fitness-dating': {
+        icon: 'fas fa-heart',
+        badge: '💕 Знакомства • Фитнес • Пары',
+        features: [
+          { icon: 'fas fa-users', text: 'Парные тренировки' },
+          { icon: 'fas fa-puzzle-piece', text: 'Совместные квесты' },
+          { icon: 'fas fa-glass-cheers', text: 'Романтичная атмосфера' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(233, 30, 99, 0.15), rgba(255, 64, 129, 0.1))',
+        accentColor: '#E91E63'
+      },
+      guitar: {
+        icon: 'fas fa-guitar',
+        badge: '🎸 Гитара • Музыка • Костёр',
+        features: [
+          { icon: 'fas fa-music', text: 'Обучение с нуля' },
+          { icon: 'fas fa-fire', text: 'Песни у костра' },
+          { icon: 'fas fa-star', text: 'Первая песня за выходные' }
+        ],
+        gradient: 'linear-gradient(135deg, rgba(255, 87, 34, 0.15), rgba(255, 152, 0, 0.1))',
+        accentColor: '#FF5722'
+      }
+    };
+    return heroData[tourId] || heroData.dance;
+  };
+
   if (loading) {
     return (
       <div className="preloader">
@@ -46,6 +119,8 @@ const TourPage = () => {
       </div>
     );
   }
+
+  const heroData = getTourHeroData(tourId);
 
   // Normalize conditions & faq so we support multiple data shapes
   const included = tour.conditions?.included || tour.included || [];
@@ -75,12 +150,54 @@ const TourPage = () => {
 
   return (
     <div className="tour-page">
-      <div className="container">
-        <div className="tour-hero">
-          <h1 className="tour-page-title">{tour.title}</h1>
-          <p className="tour-page-description">{tour.description}</p>
+      {/* Улучшенная Hero секция */}
+      <section className="tour-hero" style={{ background: heroData.gradient }}>
+        <div className="container">
+          <div className="tour-hero-content">
+            <div className="tour-hero-icon" style={{ color: heroData.accentColor }}>
+              <i className={heroData.icon}></i>
+            </div>
+            
+            <span className="tour-hero-badge" style={{ background: `${heroData.accentColor}20`, color: heroData.accentColor }}>
+              {heroData.badge}
+            </span>
+            
+            <h1 className="tour-hero-title">
+              {tour.title}
+            </h1>
+            
+            <p className="tour-hero-description">
+              {tour.description}
+            </p>
+            
+            <div className="tour-hero-features">
+              {heroData.features.map((feature, index) => (
+                <div key={index} className="tour-hero-feature">
+                  <i className={feature.icon} style={{ color: heroData.accentColor }}></i>
+                  <span>{feature.text}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div className="tour-hero-stats">
+              <div className="tour-stat">
+                <div className="tour-stat-value">{tour.duration}</div>
+                <div className="tour-stat-label">Длительность</div>
+              </div>
+              <div className="tour-stat">
+                <div className="tour-stat-value">от {tour.price.toLocaleString('ru-RU')} ₽</div>
+                <div className="tour-stat-label">Стоимость</div>
+              </div>
+              <div className="tour-stat">
+                <div className="tour-stat-value">20-21 июня</div>
+                <div className="tour-stat-label">Даты</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
+      <div className="container">
         {/* Архитектура тура */}
         <section className="tour-section glass">
           <h2 className="section-title">1. Архитектура тура</h2>

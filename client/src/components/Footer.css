@@ -58,14 +58,22 @@
 }
 
 .footer-section ul li a,
-.footer-section ul li span {
+.footer-section ul li span,
+.footer-nav-link {
   color: #94a3b8;
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  text-align: left;
 }
 
-.footer-section ul li a:hover {
+.footer-section ul li a:hover,
+.footer-nav-link:hover {
   color: #4CAF50;
 }
 
@@ -162,7 +170,8 @@
   }
 
   .footer-section ul li a,
-  .footer-section ul li span {
+  .footer-section ul li span,
+  .footer-nav-link {
     font-size: 0.8125rem;
   }
 

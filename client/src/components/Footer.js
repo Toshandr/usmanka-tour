@@ -1,8 +1,31 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (sectionId) => {
+    // Если мы не на главной странице, сначала переходим на неё
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Ждём немного, чтобы страница загрузилась, затем скроллим
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Если уже на главной, просто скроллим
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <footer className="footer">
@@ -23,10 +46,42 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Быстрые ссылки</h4>
             <ul>
-              <li><a href="#tours">Все туры</a></li>
-              <li><a href="#about">О месте</a></li>
-              <li><a href="#testimonials">Отзывы</a></li>
-              <li><a href="#contact">Контакты</a></li>
+              <li>
+                <button 
+                  type="button" 
+                  className="footer-nav-link"
+                  onClick={() => handleNavClick('tours')}
+                >
+                  Все туры
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  className="footer-nav-link"
+                  onClick={() => handleNavClick('about')}
+                >
+                  О месте
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  className="footer-nav-link"
+                  onClick={() => handleNavClick('testimonials')}
+                >
+                  Отзывы
+                </button>
+              </li>
+              <li>
+                <button 
+                  type="button" 
+                  className="footer-nav-link"
+                  onClick={() => handleNavClick('contact')}
+                >
+                  Контакты
+                </button>
+              </li>
             </ul>
           </div>
 
