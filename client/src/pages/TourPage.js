@@ -294,8 +294,8 @@ const TourPage = () => {
                   <div className="tariff-wine">+ {tariff.wine} ₽ винная дегустация</div>
                 )}
                 <div className="tariff-details">
-                  {tariff.room !== 'Нет' && <div><i className="fas fa-bed"></i> {tariff.room}</div>}
-                  {tariff.accommodation !== 'Нет' && <div><i className="fas fa-users"></i> {tariff.accommodation}</div>}
+                  {tariff.room && <div><i className="fas fa-bed"></i> {tariff.room}</div>}
+                  {tariff.accommodation && <div><i className="fas fa-users"></i> {tariff.accommodation}</div>}
                 </div>
                 <button 
                   className="btn btn-primary"
