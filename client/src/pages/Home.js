@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TourCard from '../components/TourCard';
+import InfoSlider from '../components/InfoSlider';
 import { toursData } from '../data/toursData';
 import './Home.css';
 
@@ -82,6 +83,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Info Slider */}
+      <InfoSlider />
 
       {/* Tours Section */}
       <section id="tours" className="tours-section">

@@ -49,6 +49,12 @@ const Header = () => {
     }
   };
 
+  const handleCalendarClick = () => {
+    setIsMobileMenuOpen(false);
+    setIsInfoDropdownOpen(false);
+    navigate('/calendar');
+  };
+
   const handleInProgressClick = () => {
     setIsMobileMenuOpen(false);
     setIsInfoDropdownOpen(false);
@@ -107,6 +113,14 @@ const Header = () => {
               </button>
               {isInfoDropdownOpen && (
                 <div className="dropdown-menu">
+                  <button 
+                    type="button" 
+                    className="dropdown-item"
+                    onClick={handleCalendarClick}
+                  >
+                    <i className="fas fa-calendar-alt"></i>
+                    Календарь
+                  </button>
                   <button 
                     type="button" 
                     className="dropdown-item"
