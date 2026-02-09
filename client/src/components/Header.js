@@ -5,6 +5,7 @@ import './Header.css';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isInfoDropdownOpen, setIsInfoDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -13,30 +14,49 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleClickOutside = (event) => {
+      if (isInfoDropdownOpen && !event.target.closest('.dropdown')) {
+        setIsInfoDropdownOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isInfoDropdownOpen]);
 
   const handleNavClick = (sectionId) => {
     setIsMobileMenuOpen(false);
+    setIsInfoDropdownOpen(false);
     
-    // Если мы не на главной странице, сначала переходим на неё
     if (location.pathname !== '/') {
       navigate('/');
-      // Ждём немного, чтобы страница загрузилась, затем скроллим
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, 300);
     } else {
-      // Если уже на главной, просто скроллим
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  };
+
+  const handleInProgressClick = () => {
+    setIsMobileMenuOpen(false);
+    setIsInfoDropdownOpen(false);
+    navigate('/in-progress');
+  };
+
+  const toggleInfoDropdown = () => {
+    setIsInfoDropdownOpen(!isInfoDropdownOpen);
   };
 
   return (
@@ -47,35 +67,85 @@ const Header = () => {
             <div className="logo-icon">
               <i className="fas fa-leaf"></i>
             </div>
-            <div className="logo-text">
-              <h1>Усманка-уикенд</h1>
-              <p>20–21 июня 2026</p>
-            </div>
           </Link>
+
+          <div className="brand-title">
+            <span>Усманка Тур</span>
+          </div>
 
           <nav className={`nav ${isMobileMenuOpen ? 'open' : ''}`}>
             <button 
               type="button" 
               className="nav-link"
-              onClick={() => handleNavClick('tours')}
-            >
-              Туры
-            </button>
-            <button 
-              type="button" 
-              className="nav-link"
-              onClick={() => handleNavClick('about')}
+              onClick={handleInProgressClick}
             >
               О нас
             </button>
             <button 
               type="button" 
-              className="nav-link btn btn-primary"
+              className="nav-link"
+              onClick={() => handleNavClick('tours')}
+            >
+              Готовые Туры
+            </button>
+            <button 
+              type="button" 
+              className="nav-link"
+              onClick={handleInProgressClick}
+            >
+              Индивидуальные туры
+            </button>
+            
+            <div className="dropdown">
+              <button 
+                type="button" 
+                className={`nav-link dropdown-toggle ${isInfoDropdownOpen ? 'active' : ''}`}
+                onClick={toggleInfoDropdown}
+              >
+                Информация
+                <i className={`fas fa-chevron-down ${isInfoDropdownOpen ? 'rotate' : ''}`}></i>
+              </button>
+              {isInfoDropdownOpen && (
+                <div className="dropdown-menu">
+                  <button 
+                    type="button" 
+                    className="dropdown-item"
+                    onClick={handleInProgressClick}
+                  >
+                    <i className="fas fa-blog"></i>
+                    Блог
+                  </button>
+                  <button 
+                    type="button" 
+                    className="dropdown-item"
+                    onClick={handleInProgressClick}
+                  >
+                    <i className="fas fa-images"></i>
+                    Галерея
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <button 
+              type="button" 
+              className="nav-link"
               onClick={() => handleNavClick('contact')}
             >
-              Связаться
+              Контакты
             </button>
           </nav>
+
+          <div className="header-contacts">
+            <div className="contact-text">
+              <i className="fas fa-phone"></i>
+              <span>+7 (900) 123-45-67</span>
+            </div>
+            <div className="contact-text">
+              <i className="fas fa-envelope"></i>
+              <span>info@usmanka-weekend.ru</span>
+            </div>
+          </div>
 
           <button 
             className="mobile-menu-btn"

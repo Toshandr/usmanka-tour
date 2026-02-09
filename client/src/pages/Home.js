@@ -17,11 +17,17 @@ const Home = () => {
     // Обработка якорей при переходе с других страниц или клике на якорь
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash) {
+      // Проверяем что hash не пустой и не является роутом (не начинается с #/)
+      if (hash && hash.length > 1 && !hash.startsWith('#/')) {
         setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+          try {
+            const element = document.querySelector(hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          } catch (e) {
+            // Игнорируем ошибки невалидных селекторов
+            console.warn('Invalid selector:', hash);
           }
         }, 100);
       }
@@ -50,10 +56,10 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <span className="hero-badge">
-              📍 Воронеж • Усманка • 20-21 июня 2026
+              📍 Воронеж • Усманка
             </span>
             <h1 className="hero-title">
-              Уикенды на <span className="gradient-text">Усманке</span>
+              Усманка <span className="gradient-text">Тур</span>
             </h1>
             <p className="hero-description">
               Активный отдых на природе в Воронежской области. Выберите свой формат: 

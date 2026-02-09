@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import TourPage from './pages/TourPage';
+import InProgress from './pages/InProgress';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tour/:tourId" element={<TourPage />} />
+            <Route path="/in-progress" element={<InProgress />} />
           </Routes>
         </main>
         <Footer />

@@ -36,7 +36,7 @@ const Footer = () => {
               <div className="logo-icon">
                 <i className="fas fa-leaf"></i>
               </div>
-              <div className="logo-text">Усманка-уикенд</div>
+              <div className="logo-text">Усманка тур</div>
             </div>
             <p className="footer-description">
               Активные туры выходного дня на природе Воронежской области
@@ -106,7 +106,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="copyright">
-            © {currentYear} Усманка-уикенд. Все права защищены
+            © {currentYear} Усманка тур. Все права защищены
           </div>
           <div className="footer-links">
             <button type="button" className="footer-link-btn">Политика конфиденциальности</button>
