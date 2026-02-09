@@ -12,11 +12,11 @@
 }
 
 .modal-overlay .modal-content {
-  max-width: 420px !important;
+  max-width: 500px !important;
   width: 100% !important;
   max-height: 90vh;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 2rem;
   position: relative;
   animation: slideUp 0.3s ease;
 }
