@@ -55,6 +55,12 @@ const Header = () => {
     navigate('/calendar');
   };
 
+  const handleGalleryClick = () => {
+    setIsMobileMenuOpen(false);
+    setIsInfoDropdownOpen(false);
+    navigate('/gallery');
+  };
+
   const handleInProgressClick = () => {
     setIsMobileMenuOpen(false);
     setIsInfoDropdownOpen(false);
@@ -132,7 +138,7 @@ const Header = () => {
                   <button 
                     type="button" 
                     className="dropdown-item"
-                    onClick={handleInProgressClick}
+                    onClick={handleGalleryClick}
                   >
                     <i className="fas fa-images"></i>
                     Галерея

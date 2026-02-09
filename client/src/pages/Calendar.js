@@ -51,7 +51,7 @@ const Calendar = () => {
     },
     {
       tourId: 'fitness-dating',
-      name: 'Фитнес-свидания',
+      name: 'Фитнес-знакомства',
       shortDescription: 'Знакомства через спорт и парные тренировки',
       price: 'от 10 000₽',
       startDate: new Date(2026, 6, 18), // 18 июля 2026

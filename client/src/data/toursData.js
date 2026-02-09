@@ -320,8 +320,8 @@ export const toursData = {
   },
   'fitness-dating': {
     id: 'fitness-dating',
-    title: 'Фитнес-свидания на Усманке',
-    shortTitle: 'Фитнес-свидания',
+    title: 'Фитнес-знакомства на Усманке',
+    shortTitle: 'Фитнес-знакомства',
     description: 'Знакомства через спорт: парные тренировки, йога вдвоём, совместные квесты и романтичные сплавы',
     image: 'https://via.placeholder.com/1200x600/E91E63/FFFFFF?text=Фитнес-свидания',
     duration: '2 дня',
