@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/usmanka-tour/static/css/main.21d8a225.css",
+    "main.js": "/usmanka-tour/static/js/main.f559818e.js",
+    "index.html": "/usmanka-tour/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.21d8a225.css",
+    "static/js/main.f559818e.js"
+  ]
+}
