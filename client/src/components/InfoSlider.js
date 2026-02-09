@@ -6,10 +6,12 @@ const InfoSlider = () => {
 
   const slides = [
     {
-      title: 'Усманка Тур',
-      description: 'это уникальная возможность провести выходные на природе с пользой для души и тела. Профессиональные инструкторы, живописные места и незабываемые впечатления ждут вас!',
+      title: '',
+      description: ' — это уникальная возможность провести выходные на природе с пользой для души и тела. Профессиональные инструкторы, живописные места и незабываемые впечатления ждут вас!',
+      highlightText: 'Усманка Тур',
       icon: 'fa-leaf',
-      gradient: 'linear-gradient(135deg, #4CAF50, #FF9800)'
+      gradient: 'linear-gradient(135deg, #4CAF50, #FF9800)',
+      hideTitle: true
     },
     {
       title: 'Танцевальный уикенд',
@@ -87,9 +89,17 @@ const InfoSlider = () => {
                 >
                   <i className={`fas ${slide.icon}`}></i>
                 </div>
-                <h3 className="slide-title">{slide.title}</h3>
+                {!slide.hideTitle && <h3 className="slide-title">{slide.title}</h3>}
                 <p className="slide-description">
-                  <span className="highlight">{slide.title}</span> — {slide.description}
+                  {slide.hideTitle ? (
+                    <>
+                      <span className="highlight">{slide.highlightText}</span>{slide.description}
+                    </>
+                  ) : (
+                    <>
+                      <span className="highlight">{slide.title}</span> — {slide.description}
+                    </>
+                  )}
                 </p>
               </div>
             </div>
