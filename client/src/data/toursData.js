@@ -1,10 +1,22 @@
+// Import images
+import musicWoman from '../assets/images/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.jpg';
+import girlReading from '../assets/images/girl-sitting-grass-reading.jpg';
+import cakeDrink from '../assets/images/high-angle-delicious-cake-drink-table.jpg';
+import sportsGirl from '../assets/images/beautiful-sports-girl-summer-park.jpg';
+import coupleTraining from '../assets/images/full-shot-couple-training-together.jpg';
+import coupleGuitar from '../assets/images/couple-with-guitar.jpg';
+import evgeniaImage from '../assets/images/IMG_1073.JPG';
+import nikolayImage from '../assets/images/photo_5244722425465867274_w.jpg';
+import dmitryImage from '../assets/images/photo_5219703669736019590_y.jpg';
+import tatianaImage from '../assets/images/photo_5219703669736019581_x.jpg';
+
 export const toursData = {
   dance: {
     id: 'dance',
     title: 'Танцевальный уикенд на Усманке',
     shortTitle: 'Танцевальный уикенд',
     description: 'Изучение хореографии с профессиональным хореографом, красивая видеосъёмка в интересных локациях, йога и винная дегустация',
-    image: `${process.env.PUBLIC_URL}/images/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.jpg`,
+    image: musicWoman,
     duration: '1-2 дня',
     price: 8000,
     color: '#4CAF50',
@@ -139,11 +151,11 @@ export const toursData = {
       }
     ],
     leaders: [
-      { name: 'Евгения Какорина', role: 'хореограф', details: ['Мастер спорта по бально-спортивным танцам', 'Хореограф с 15-летним стажем', 'Основатель студии Clan Dance'], image: `${process.env.PUBLIC_URL}/images/IMG_1073.JPG` },
-      { name: 'Николай Морозов', role: 'видеограф', details: ['Видеограф специализирующийся на съемке танцевальных роликов с 7 летним стажем работы', 'Полнокадровая профессиональная камера и стедикам. Огромный набор световой техники', 'Более 1000 съёмок в год, работа с 1250 танцоров и с более 100 хореографами'], image: `${process.env.PUBLIC_URL}/images/photo_5244722425465867274_w.jpg` },
-      { name: 'Дмитрий Попов', role: 'организатор', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: `${process.env.PUBLIC_URL}/images/photo_5219703669736019590_y.jpg` },
+      { name: 'Евгения Какорина', role: 'хореограф', details: ['Мастер спорта по бально-спортивным танцам', 'Хореограф с 15-летним стажем', 'Основатель студии Clan Dance'], image: evgeniaImage },
+      { name: 'Николай Морозов', role: 'видеограф', details: ['Видеограф специализирующийся на съемке танцевальных роликов с 7 летним стажем работы', 'Полнокадровая профессиональная камера и стедикам. Огромный набор световой техники', 'Более 1000 съёмок в год, работа с 1250 танцоров и с более 100 хореографами'], image: nikolayImage },
+      { name: 'Дмитрий Попов', role: 'организатор', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
       { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
-      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: `${process.env.PUBLIC_URL}/images/photo_5219703669736019581_x.jpg` }
+      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: tatianaImage }
     ],
     included: [
       'Трансфер туда и обратно вне зависимости, какой тур выбран (однодневный или двухдневный). В случае однодневного тура, трансфер предоставляется после винной дегустации',
@@ -168,7 +180,7 @@ export const toursData = {
     title: 'Английская Усманка',
     shortTitle: 'Английская Усманка',
     description: 'Полное погружение в английский на природе: уроки, игры, экскурсии и квесты на английском языке',
-    image: `${process.env.PUBLIC_URL}/images/girl-sitting-grass-reading.jpg`,
+    image: girlReading,
     duration: '2 дня',
     price: 6000,
     color: '#FF9800',
@@ -219,9 +231,9 @@ export const toursData = {
       { name: 'ВИП', price: 18000, room: 'Повышенной комфортности', accommodation: 'Без подселения', wine: 2000 }
     ],
     leaders: [
-      { name: 'Дмитрий Попов', role: 'ведущий тура' },
-      { name: 'Сергей Самочёрнов', role: 'йог' },
-      { name: 'Татьяна Попова', role: 'сомелье' }
+      { name: 'Дмитрий Попов', role: 'ведущий тура', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
+      { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
+      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: tatianaImage }
     ]
     ,
     included: [
@@ -245,7 +257,7 @@ export const toursData = {
     title: 'Кулинарная Усманка',
     shortTitle: 'Кулинарная Усманка',
     description: 'Мастер-классы от шеф-повара: высокая кухня на костре, винная дегустация и гастрономическая экскурсия',
-    image: `${process.env.PUBLIC_URL}/images/high-angle-delicious-cake-drink-table.jpg`,
+    image: cakeDrink,
     duration: '2 дня',
     price: 8000,
     color: '#9C27B0',
@@ -295,10 +307,10 @@ export const toursData = {
       { name: 'ВИП', price: 20000, room: 'Повышенной комфортности', accommodation: 'Без подселения', wine: 0 }
     ],
     leaders: [
-      { name: 'Дмитрий Попов', role: 'организатор' },
+      { name: 'Дмитрий Попов', role: 'организатор', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
       { name: 'Сергей', role: 'шеф-повар' },
-      { name: 'Сергей Самочёрнов', role: 'йог' },
-      { name: 'Татьяна Попова', role: 'сомелье' }
+      { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
+      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: tatianaImage }
     ]
     ,
     included: [
@@ -322,7 +334,7 @@ export const toursData = {
     title: 'Фитнес Усманка',
     shortTitle: 'Фитнес Усманка',
     description: 'Активный уикенд: йога, танцы, групповые тренировки, сплавы на байдарках и консультации по питанию',
-    image: `${process.env.PUBLIC_URL}/images/beautiful-sports-girl-summer-park.jpg`,
+    image: sportsGirl,
     duration: '2 дня',
     price: 8000,
     color: '#2196F3',
@@ -375,8 +387,8 @@ export const toursData = {
       { name: 'ВИП', price: 20000, room: 'Повышенной комфортности', accommodation: 'Без подселения', wine: 0 }
     ],
     leaders: [
-      { name: 'Дмитрий Попов', role: 'ведущий' },
-      { name: 'Сергей Самочёрнов', role: 'йог' },
+      { name: 'Дмитрий Попов', role: 'ведущий', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
+      { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
       { name: 'Вика Калюжная', role: 'хореограф HIGH HEELS (только девушки)' }
     ]
     ,
@@ -401,7 +413,7 @@ export const toursData = {
     title: 'Фитнес-знакомства на Усманке',
     shortTitle: 'Фитнес-знакомства',
     description: 'Знакомства через спорт: парные тренировки, йога вдвоём, совместные квесты и романтичные сплавы',
-    image: `${process.env.PUBLIC_URL}/images/full-shot-couple-training-together.jpg`,
+    image: coupleTraining,
     duration: '2 дня',
     price: 10000,
     color: '#E91E63',
@@ -449,9 +461,9 @@ export const toursData = {
       { name: 'ВИП с подселением', price: 20000, room: '2 раздельные кровати повышенной комфортности', accommodation: 'С подселением', wine: 0 }
     ],
     leaders: [
-      { name: 'Дмитрий Попов', role: 'организатор' },
-      { name: 'Сергей Самочёрнов', role: 'йог' },
-      { name: 'Татьяна Попова', role: 'сомелье' }
+      { name: 'Дмитрий Попов', role: 'организатор', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
+      { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
+      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: tatianaImage }
     ]
     ,
     included: [
@@ -475,7 +487,7 @@ export const toursData = {
     title: 'Гитара-Усманка',
     shortTitle: 'Гитара-Усманка',
     description: 'Научитесь играть на гитаре с нуля за выходные. Исполните свою первую песню у костра под звёздами',
-    image: `${process.env.PUBLIC_URL}/images/couple-with-guitar.jpg`,
+    image: coupleGuitar,
     duration: '1-2 дня',
     price: 5000,
     color: '#FF5722',
@@ -527,10 +539,10 @@ export const toursData = {
       { name: '+ 2 день ВИП', price: 15000, room: 'Повышенной комфортности', accommodation: 'Без подселения', wine: 2000 }
     ],
     leaders: [
-      { name: 'Дмитрий Попов', role: 'организатор' },
+      { name: 'Дмитрий Попов', role: 'организатор', details: ['Кандидат биологических наук', 'Более 25 лет в туризме', 'Посетил 36 стран (многие несколько раз) и несколько сот городов'], image: dmitryImage },
       { name: 'Алексей Цыплаков', role: 'ведущий тура' },
-      { name: 'Сергей Самочёрнов', role: 'йог' },
-      { name: 'Татьяна Попова', role: 'сомелье' }
+      { name: 'Сергей Самочёрнов', role: 'йог', details: ['Стиль практики: пауэр-йога', 'Дипломированный специалист по йогатерапии', 'Практикует йогу с 1995 года'] },
+      { name: 'Татьяна Попова', role: 'сомелье', details: ['Выпускник школы вина ВайнПипл, г. Москва', 'Топ-100 в рейтинге Вивино', 'Посетила винодельческие провинции во Франции, на Канарских островах и др. регионов'], image: tatianaImage }
     ],
     included: [
       'Трансфер туда и обратно вне зависимости от формата тура.',
