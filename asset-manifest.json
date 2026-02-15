@@ -1,11 +1,18 @@
 {
   "files": {
-    "main.css": "/usmanka-tour/static/css/main.f6a17f2e.css",
-    "main.js": "/usmanka-tour/static/js/main.0669c39f.js",
+    "main.css": "/usmanka-tour/static/css/main.85e8bd96.css",
+    "main.js": "/usmanka-tour/static/js/main.de0f3aed.js",
+    "static/media/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.jpg": "/usmanka-tour/static/media/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.f97786c99a9ea91f28e6.jpg",
+    "static/media/mountains-lake.jpg": "/usmanka-tour/static/media/mountains-lake.368083c8fff64c937679.jpg",
+    "static/media/high-angle-delicious-cake-drink-table.jpg": "/usmanka-tour/static/media/high-angle-delicious-cake-drink-table.015ad787b931e2829c1c.jpg",
+    "static/media/girl-sitting-grass-reading.jpg": "/usmanka-tour/static/media/girl-sitting-grass-reading.df2c61f198822d953507.jpg",
+    "static/media/full-shot-couple-training-together.jpg": "/usmanka-tour/static/media/full-shot-couple-training-together.caae19a2188bc36b87cf.jpg",
+    "static/media/couple-with-guitar.jpg": "/usmanka-tour/static/media/couple-with-guitar.dfd9273453e525ddd4e6.jpg",
+    "static/media/beautiful-sports-girl-summer-park.jpg": "/usmanka-tour/static/media/beautiful-sports-girl-summer-park.c9ba04b8f8459072a30c.jpg",
     "index.html": "/usmanka-tour/index.html"
   },
   "entrypoints": [
-    "static/css/main.f6a17f2e.css",
-    "static/js/main.0669c39f.js"
+    "static/css/main.85e8bd96.css",
+    "static/js/main.de0f3aed.js"
   ]
 }
