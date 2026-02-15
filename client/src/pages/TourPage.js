@@ -27,11 +27,6 @@ const TourPage = () => {
     setSelectedTariff(null);
   };
 
-  const handleLeaderClick = (leader) => {
-    setSelectedLeader(leader);
-    setIsLeaderModalOpen(true);
-  };
-
   const closeLeaderModal = () => {
     setIsLeaderModalOpen(false);
     setSelectedLeader(null);
