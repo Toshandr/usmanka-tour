@@ -41,20 +41,26 @@ const AlbumView = () => {
       });
     });
     
-    // Добавляем все видео
+    // Добавляем все видео с уникальными обложками
     const videos = [
-      'document_5377768674906086687.mp4', 'document_5377768674906086688.mp4', 'document_5377768674906086689.mp4',
-      'document_5377768674906086693.mp4', 'document_5377768674906086696.mp4', 'document_5377768674906086697.mp4',
-      'document_5377768674906086706.mp4', 'document_5377768674906086707.mp4', 'document_5377838193246739917.mp4',
-      'document_5377838193246739918.mp4'
+      { file: 'document_5377768674906086687.mp4', thumbnail: 'photo_5377768675362324413_y.jpg' },
+      { file: 'document_5377768674906086688.mp4', thumbnail: 'photo_5377768675362324414_y.jpg' },
+      { file: 'document_5377768674906086689.mp4', thumbnail: 'photo_5377768675362324415_y.jpg' },
+      { file: 'document_5377768674906086693.mp4', thumbnail: 'photo_5377768675362324416_y.jpg' },
+      { file: 'document_5377768674906086696.mp4', thumbnail: 'photo_5377768675362324417_y.jpg' },
+      { file: 'document_5377768674906086697.mp4', thumbnail: 'photo_5377768675362324419_y.jpg' },
+      { file: 'document_5377768674906086706.mp4', thumbnail: 'photo_5377768675362324422_y.jpg' },
+      { file: 'document_5377768674906086707.mp4', thumbnail: 'photo_5377768675362324423_y.jpg' },
+      { file: 'document_5377838193246739917.mp4', thumbnail: 'photo_5377838193702976514_y.jpg' },
+      { file: 'document_5377838193246739918.mp4', thumbnail: 'photo_5377838193702976515_y.jpg' }
     ];
     
     videos.forEach(video => {
       media.push({
         id: id++,
         type: 'video',
-        url: `${process.env.PUBLIC_URL}/images/Gallery/2022/${video}`,
-        thumbnail: `${process.env.PUBLIC_URL}/images/Gallery/2022/photo_5377768675362324413_y.jpg` // Используем первое фото как превью
+        url: `${process.env.PUBLIC_URL}/images/Gallery/2022/${video.file}`,
+        thumbnail: `${process.env.PUBLIC_URL}/images/Gallery/2022/${video.thumbnail}`
       });
     });
     

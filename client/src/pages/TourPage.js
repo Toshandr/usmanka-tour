@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BookingModal from '../components/BookingModal';
 import LeaderModal from '../components/LeaderModal';
+import TariffDetailsModal from '../components/TariffDetailsModal';
 import { toursData } from '../data/toursData';
 import './TourPage.css';
 
@@ -13,6 +14,8 @@ const TourPage = () => {
   const [selectedTariff, setSelectedTariff] = useState(null);
   const [isLeaderModalOpen, setIsLeaderModalOpen] = useState(false);
   const [selectedLeader, setSelectedLeader] = useState(null);
+  const [isTariffDetailsOpen, setIsTariffDetailsOpen] = useState(false);
+  const [selectedTariffDetails, setSelectedTariffDetails] = useState(null);
 
   const handleBooking = (tariff) => {
     setSelectedTariff(tariff);
@@ -32,6 +35,18 @@ const TourPage = () => {
   const closeLeaderModal = () => {
     setIsLeaderModalOpen(false);
     setSelectedLeader(null);
+  };
+
+  const handleTariffClick = (tariff) => {
+    if (tariff.details) {
+      setSelectedTariffDetails(tariff);
+      setIsTariffDetailsOpen(true);
+    }
+  };
+
+  const closeTariffDetails = () => {
+    setIsTariffDetailsOpen(false);
+    setSelectedTariffDetails(null);
   };
 
   useEffect(() => {
@@ -141,10 +156,11 @@ const TourPage = () => {
   const toBring = (() => {
     if (tour.conditions?.toBring) return tour.conditions.toBring;
     if (!tour.what_to_bring) return [];
-    // if what_to_bring is an array of groups with items, flatten
-    if (Array.isArray(tour.what_to_bring) && tour.what_to_bring.length && typeof tour.what_to_bring[0] === 'object') {
-      return tour.what_to_bring.flatMap((g) => g.items || []);
+    // if what_to_bring is an array of groups with items, return as is
+    if (Array.isArray(tour.what_to_bring) && tour.what_to_bring.length && typeof tour.what_to_bring[0] === 'object' && tour.what_to_bring[0].title) {
+      return tour.what_to_bring;
     }
+    // if it's a flat array, return as is
     return tour.what_to_bring;
   })();
 
@@ -164,7 +180,11 @@ const TourPage = () => {
   return (
     <div className="tour-page">
       {/* Улучшенная Hero секция */}
-      <section className="tour-hero" style={{ background: heroData.gradient }}>
+      <section className="tour-hero">
+        <div className="tour-hero-background">
+          <img src={tour.image} alt={tour.title} className="tour-hero-image" />
+          <div className="tour-hero-overlay" style={{ background: heroData.gradient }}></div>
+        </div>
         <div className="container">
           <div className="tour-hero-content">
             <div className="tour-hero-icon" style={{ color: heroData.accentColor }}>
@@ -297,12 +317,22 @@ const TourPage = () => {
                   {tariff.room && <div><i className="fas fa-bed"></i> {tariff.room}</div>}
                   {tariff.accommodation && <div><i className="fas fa-users"></i> {tariff.accommodation}</div>}
                 </div>
-                <button 
-                  className="btn btn-primary"
-                  onClick={() => handleBooking(tariff)}
-                >
-                  Забронировать
-                </button>
+                <div className="tariff-actions">
+                  {tariff.details && (
+                    <button 
+                      className="btn btn-secondary"
+                      onClick={() => handleTariffClick(tariff)}
+                    >
+                      Подробнее
+                    </button>
+                  )}
+                  <button 
+                    className="btn btn-primary"
+                    onClick={() => handleBooking(tariff)}
+                  >
+                    Забронировать
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -311,31 +341,69 @@ const TourPage = () => {
         {/* Ведущие */}
         <section className="tour-section glass">
           <h2 className="section-title">6. Ведущие</h2>
-          <div className="leaders-grid">
-            {tour.leaders.map((leader, index) => (
-              <div 
-                key={index} 
-                className="leader-card clickable"
-                onClick={() => handleLeaderClick(leader)}
-              >
-                {leader.image ? (
-                  <img src={leader.image} alt={leader.name} className="leader-image" />
-                ) : (
-                  <div className="leader-icon">
-                    <i className="fas fa-user"></i>
-                  </div>
-                )}
-                <div className="leader-info">
-                  <h4>{leader.name}</h4>
-                  <p>{leader.role}</p>
+          
+          <div className="leaders-wrapper">
+            {/* Организатор отдельно по центру */}
+            <div className="organizer-section">
+              {tour.leaders.filter(leader => leader.role === 'организатор').map((leader, index) => (
+                <div 
+                  key={`organizer-${index}`} 
+                  className="leader-card-large"
+                >
+                  {leader.image ? (
+                    <div className="leader-photo-large">
+                      <img src={leader.image} alt={leader.name} />
+                    </div>
+                  ) : (
+                    <div className="leader-photo-large leader-photo-placeholder">
+                      <i className="fas fa-user"></i>
+                    </div>
+                  )}
+                <div className="leader-content">
+                  <h3 className="leader-name">{leader.name}</h3>
+                  <p className="leader-role">{leader.role}</p>
                   {leader.details && leader.details.length > 0 && (
-                    <span className="leader-more">
-                      <i className="fas fa-info-circle"></i> Подробнее
-                    </span>
+                    <ul className="leader-achievements">
+                      {leader.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
                   )}
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Остальные ведущие в сетке 2x2 */}
+          <div className="leaders-grid-large">
+            {tour.leaders.filter(leader => leader.role !== 'организатор').map((leader, index) => (
+              <div 
+                key={index} 
+                className="leader-card-large"
+              >
+                {leader.image ? (
+                  <div className="leader-photo-large">
+                    <img src={leader.image} alt={leader.name} />
+                  </div>
+                ) : (
+                  <div className="leader-photo-large leader-photo-placeholder">
+                    <i className="fas fa-user"></i>
+                  </div>
+                )}
+                <div className="leader-content">
+                  <h3 className="leader-name">{leader.name}</h3>
+                  <p className="leader-role">{leader.role}</p>
+                  {leader.details && leader.details.length > 0 && (
+                    <ul className="leader-achievements">
+                      {leader.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
           </div>
         </section>
 
@@ -346,25 +414,47 @@ const TourPage = () => {
             <div className="conditions-grid">
               <div className="conditions-block">
                 <h3><i className="fas fa-check-circle"></i> Включено в тур:</h3>
-                <ul className="feature-list">
+                <div className="included-items">
                   {included.map((item, index) => (
-                    <li key={index}>
+                    <div key={index} className="included-item">
                       <i className="fas fa-check"></i>
                       <span>{item}</span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
               <div className="conditions-block">
                 <h3><i className="fas fa-suitcase"></i> Необходимо взять с собой:</h3>
-                <ul className="feature-list">
-                  {toBring.map((item, index) => (
-                    <li key={index}>
-                      <i className="fas fa-arrow-right"></i>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {toBring.length > 0 && toBring[0].title ? (
+                  // Structured format with categories
+                  <div className="what-to-bring-categories">
+                    {toBring.map((category, catIndex) => (
+                      <div key={catIndex} className="bring-category">
+                        <h4 className="bring-category-title">
+                          {category.title}
+                        </h4>
+                        <ul className="feature-list">
+                          {category.items.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                              <i className="fas fa-arrow-right"></i>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Flat list format
+                  <ul className="feature-list">
+                    {toBring.map((item, index) => (
+                      <li key={index}>
+                        <i className="fas fa-arrow-right"></i>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           </section>
@@ -405,6 +495,13 @@ const TourPage = () => {
           isOpen={isLeaderModalOpen}
           onClose={closeLeaderModal}
           leader={selectedLeader}
+        />
+      )}
+
+      {isTariffDetailsOpen && selectedTariffDetails && (
+        <TariffDetailsModal
+          tariff={selectedTariffDetails}
+          onClose={closeTariffDetails}
         />
       )}
     </div>

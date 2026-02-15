@@ -38,21 +38,29 @@ const Header = () => {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const headerOffset = 100; // Высота хедера + отступ
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       }, 300);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const headerOffset = 100; // Высота хедера + отступ
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }
-  };
-
-  const handleCalendarClick = () => {
-    setIsMobileMenuOpen(false);
-    setIsInfoDropdownOpen(false);
-    navigate('/calendar');
   };
 
   const handleGalleryClick = () => {
@@ -81,9 +89,9 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className="brand-title">
+          <Link to="/" className="brand-title">
             <span>Усманка Тур</span>
-          </div>
+          </Link>
 
           <nav className={`nav ${isMobileMenuOpen ? 'open' : ''}`}>
             <button 
@@ -107,6 +115,13 @@ const Header = () => {
             >
               Индивидуальные туры
             </button>
+            <button 
+              type="button" 
+              className="nav-link"
+              onClick={() => handleNavClick('calendar')}
+            >
+              Календарь
+            </button>
             
             <div className="dropdown">
               <button 
@@ -119,14 +134,6 @@ const Header = () => {
               </button>
               {isInfoDropdownOpen && (
                 <div className="dropdown-menu">
-                  <button 
-                    type="button" 
-                    className="dropdown-item"
-                    onClick={handleCalendarClick}
-                  >
-                    <i className="fas fa-calendar-alt"></i>
-                    Календарь
-                  </button>
                   <button 
                     type="button" 
                     className="dropdown-item"
@@ -160,10 +167,6 @@ const Header = () => {
             <div className="contact-text">
               <i className="fas fa-phone"></i>
               <span>+7 (900) 123-45-67</span>
-            </div>
-            <div className="contact-text">
-              <i className="fas fa-envelope"></i>
-              <span>info@usmanka-weekend.ru</span>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TourCard from '../components/TourCard';
-import InfoSlider from '../components/InfoSlider';
+import HeroSlider from '../components/HeroSlider';
+import Calendar from './Calendar';
 import { toursData } from '../data/toursData';
 import './Home.css';
 
@@ -52,40 +53,8 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <span className="hero-badge">
-              📍 Воронеж • Усманка
-            </span>
-            <h1 className="hero-title">
-              Усманка <span className="gradient-text">Тур</span>
-            </h1>
-            <p className="hero-description">
-              Активный отдых на природе в Воронежской области. Выберите свой формат: 
-              танцы, английский, кулинария, фитнес, знакомства или гитара
-            </p>
-            <div className="hero-features">
-              <div className="feature-item">
-                <i className="fas fa-bus"></i>
-                <span>Трансфер из Воронежа</span>
-              </div>
-              <div className="feature-item">
-                <i className="fas fa-utensils"></i>
-                <span>Питание включено</span>
-              </div>
-              <div className="feature-item">
-                <i className="fas fa-bed"></i>
-                <span>Размещение на выбор</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Info Slider */}
-      <InfoSlider />
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* Tours Section */}
       <section id="tours" className="tours-section">
@@ -100,6 +69,20 @@ const Home = () => {
               <TourCard key={tour.id} tour={tour} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Calendar Section */}
+      <section id="calendar" className="calendar-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-badge">Расписание</span>
+            <h2 className="section-title">Календарь туров</h2>
+            <p className="section-description">
+              Выберите удобную дату для вашего путешествия
+            </p>
+          </div>
+          <Calendar />
         </div>
       </section>
 

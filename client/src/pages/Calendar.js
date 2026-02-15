@@ -143,6 +143,11 @@ const Calendar = () => {
     setSelectedDay(clickedDate);
   };
 
+  const handleLegendItemClick = (tour) => {
+    // Устанавливаем selectedDay на дату начала тура
+    setSelectedDay(tour.startDate);
+  };
+
   const handleGoToTour = (tourId) => {
     navigate(`/tour/${tourId}`);
   };
@@ -214,12 +219,16 @@ const Calendar = () => {
           <h3>Запланированные туры:</h3>
           <div className="legend-items">
             {tourEvents.map(tour => (
-              <div key={tour.tourId} className="legend-item">
+              <button
+                key={tour.tourId}
+                className="legend-item"
+                onClick={() => handleLegendItemClick(tour)}
+              >
                 <div className="legend-color" style={{ background: tour.color }}>
                   <i className={`fas ${tour.icon}`}></i>
                 </div>
                 <span>{tour.name}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>

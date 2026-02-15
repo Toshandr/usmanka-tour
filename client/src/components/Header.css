@@ -56,6 +56,12 @@
   color: #fff;
   white-space: nowrap;
   flex-shrink: 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.brand-title:hover {
+  color: #4CAF50;
 }
 
 .nav {

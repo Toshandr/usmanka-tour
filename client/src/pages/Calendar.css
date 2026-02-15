@@ -158,6 +158,17 @@
   background: rgba(30, 41, 59, 0.4);
   border-radius: 0.5rem;
   border: 1px solid rgba(71, 85, 105, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+}
+
+.legend-item:hover {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.5);
+  transform: translateY(-2px);
 }
 
 .legend-color {
