@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/usmanka-tour/static/css/main.85e8bd96.css",
-    "main.js": "/usmanka-tour/static/js/main.de0f3aed.js",
+    "main.js": "/usmanka-tour/static/js/main.d05cc5fe.js",
     "static/media/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.jpg": "/usmanka-tour/static/media/close-up-portrait-woman-listening-music-good-mood-dressed-gray-knitted-sweater.f97786c99a9ea91f28e6.jpg",
     "static/media/mountains-lake.jpg": "/usmanka-tour/static/media/mountains-lake.368083c8fff64c937679.jpg",
     "static/media/high-angle-delicious-cake-drink-table.jpg": "/usmanka-tour/static/media/high-angle-delicious-cake-drink-table.015ad787b931e2829c1c.jpg",
@@ -13,6 +13,6 @@
   },
   "entrypoints": [
     "static/css/main.85e8bd96.css",
-    "static/js/main.de0f3aed.js"
+    "static/js/main.d05cc5fe.js"
   ]
 }
